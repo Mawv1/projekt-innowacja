@@ -16,5 +16,5 @@
     <protected>false</protected>
     <showsLocation>false</showsLocation>
     <showsStatus>false</showsStatus>
-    <url>http://www.google.com/search?q={!Contact_FirstName} {!Contact_LastName}</url>
+    <url>http://www.google.com/search?q={!Contact.FirstName} {!Contact.LastName}</url>
 </WebLink>

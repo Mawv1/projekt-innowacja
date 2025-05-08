@@ -22,6 +22,10 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>AiMals</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
         <members>Admin</members>
         <name>Profile</name>
     </types>
