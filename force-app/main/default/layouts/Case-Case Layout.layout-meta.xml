@@ -115,6 +115,8 @@
                 <behavior>Edit</behavior>
                 <field>Last_Seen_Location__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Owner_Phone__c</field>
