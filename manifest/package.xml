@@ -8,6 +8,7 @@
         <members>Product2</members>
         <members>Order</members>
         <members>Animal__c</members>
+        <members>Adoption__c</members>
         <members>Shelter__c</members>
         <name>CustomObject</name>
     </types>
