@@ -16,5 +16,5 @@
     <protected>false</protected>
     <showsLocation>false</showsLocation>
     <showsStatus>false</showsStatus>
-    <url>http://weather.yahoo.com/search/weather2?p={!Contact_MailingPostalCode}</url>
+    <url>http://weather.yahoo.com/search/weather2?p={!Contact.MailingPostalCode}</url>
 </WebLink>
