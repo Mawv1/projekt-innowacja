@@ -23,6 +23,7 @@ jobs:
 
       - name: Deploy to Integration Org
         run: |
+          #Enable person accounts!
           sf project deploy start \
             --source-dir force-app/main/default \
             --test-level RunLocalTests
