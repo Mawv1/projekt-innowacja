@@ -22,6 +22,10 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>AdoptionValidationTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
         <members>AiMals</members>
         <name>CustomApplication</name>
     </types>
