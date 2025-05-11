@@ -11,10 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Salesforce CLI & Authenticate
-        uses: sfdx-actions/setup-sfdx@v2
+        uses: sfdx-actions/setup-sfdx@v1
         with:
           sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
 
