@@ -13,6 +13,14 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Contact-Contact Layout</members>
@@ -28,6 +36,10 @@
     <types>
         <members>AiMals</members>
         <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Ai_Mals_UtilityBar</members>
+        <name>FlexiPage</name>
     </types>
     <types>
         <members>Admin</members>
