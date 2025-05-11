@@ -1,0 +1,31 @@
+name: Deploy to Integration
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Salesforce CLI & Authenticate
+        uses: sfdx-actions/setup-sfdx@v2
+        with:
+          sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
+
+      - name: Validate & Run Tests
+        run: |
+          sfdx force:org:create -f config/project-scratch-def.json \
+            -a IntegrationScratch -s -d 1
+          sfdx force:source:push
+          sfdx force:apex:test:run --wait 10 --codecoverage --resultformat junit
+
+      - name: Deploy to Integration Org
+        run: |
+          sfdx force:source:deploy --targetusername IntegrationScratch \
+            --testlevel RunLocalTests
