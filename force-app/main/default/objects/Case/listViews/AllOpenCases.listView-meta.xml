@@ -3,11 +3,6 @@
     <fullName>AllOpenCases</fullName>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CASES.CREATED_DATE_DATE_ONLY</field>
-        <operation>equals</operation>
-        <value>LAST_N_DAYS:30</value>
-    </filters>
-    <filters>
         <field>CASES.CLOSED</field>
         <operation>equals</operation>
         <value>0</value>
