@@ -4,18 +4,12 @@
         <members>Account</members>
         <members>Case</members>
         <members>Contact</members>
-        <members>Lead</members>
-        <members>Product2</members>
-        <members>Order</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Contact-Contact Layout</members>
-        <members>Lead-Lead Layout</members>
-        <members>Product2-Product Layout</members>
-        <members>Order-Order Layout</members>
         <name>Layout</name>
     </types>
     <types>
