@@ -1,0 +1,29 @@
+name: Deploy to Integration
+
+on:
+  push:
+    branches:
+      - Develop
+
+jobs:
+  deploy-branch-to-int-org:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Salesforce CLI & Authenticate
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
+
+      - name: Deploy to Integration Org
+        run: |
+          #Enable person accounts!
+          sf project deploy start \
+            --source-dir force-app/main/default \
+            --test-level RunLocalTests
