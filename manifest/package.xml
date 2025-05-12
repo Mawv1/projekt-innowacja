@@ -10,15 +10,22 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>AdoptionTriggerHandler</members>
+        <members>AdoptionTriggerTest</members>
+        <members>AdoptionValidationTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AdoptionTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>Account</members>
         <members>Case</members>
-        <members>Contact</members>
-        <members>Lead</members>
-        <members>Product2</members>
-        <members>Order</members>
         <members>Animal__c</members>
         <members>Adoption__c</members>
         <members>Shelter__c</members>
+        <members>Person__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -32,10 +39,6 @@
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
-        <members>Contact-Contact Layout</members>
-        <members>Lead-Lead Layout</members>
-        <members>Product2-Product Layout</members>
-        <members>Order-Order Layout</members>
         <name>Layout</name>
     </types>
     <types>

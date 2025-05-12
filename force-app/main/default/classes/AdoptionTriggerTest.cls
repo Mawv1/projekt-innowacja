@@ -60,16 +60,16 @@ public class AdoptionTriggerTest {
             ));
         }
 
-        Test.startTest();
+        // Test.startTest();
         insert adoptionList;
-        Test.stopTest();
+        // Test.stopTest();
 
         person = [SELECT Food_Points__c FROM Person__c WHERE Id = :personId];
         System.assertEquals(expectedFoodPoints, person.Food_Points__c, 'Food points after insert are incorrect');
 
-        Test.startTest();
+        // Test.startTest();
         delete adoptionList;
-        Test.stopTest();
+        // Test.stopTest();
 
         person = [SELECT Food_Points__c FROM Person__c WHERE Id = :personId];
         System.assertEquals(0, person.Food_Points__c, 'Food points after delete should be 0');
