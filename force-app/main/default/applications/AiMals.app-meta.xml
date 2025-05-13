@@ -11,10 +11,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Ai:Mals</label>
     <navType>Standard</navType>
-    <!-- <tabs>Ai_Mals__c</tabs>
-    <tabs>Shelter__c</tabs>
-    <tabs>Animal__c</tabs>
-    <tabs>Adoption__c</tabs> -->
     <uiType>Lightning</uiType>
     <utilityBar>Ai_Mals_UtilityBar</utilityBar>
 </CustomApplication>
