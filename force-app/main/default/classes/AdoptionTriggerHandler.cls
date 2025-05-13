@@ -6,7 +6,7 @@ public with sharing class AdoptionTriggerHandler {
     public static final Integer REAL_ADOPTION_POINTS = 20;
     public static final Integer VIRTUAL_ADOPTION_POINTS = 10;
     
-    public static void changeFoodPoints(List<Adoption__c> adoptionList, Boolean operationType) {
+    public static void changeFoodPoints(List<Adoption__c> adoptionList, System.TriggerOperation operationType) {
         Map<String, Id> recordTypeMap = AdoptionUtils.getAdoptionRecordTypes();
         Map<Id, Integer> userFoodPointsMap = new Map<Id, Integer>();
         
@@ -14,15 +14,15 @@ public with sharing class AdoptionTriggerHandler {
             Integer counter = 0;
             
             if (adoption.RecordTypeId == recordTypeMap.get(RECORD_TYPE_REAL)) {
-                if ((operationType == Trigger.isInsert && adoption.Status__c == STATUS_APPROVED) || operationType == Trigger.isUpdate) {
+                if ((operationType == System.TriggerOperation.AFTER_INSERT && adoption.Status__c == STATUS_APPROVED) || operationType == System.TriggerOperation.AFTER_UPDATE) {
                     counter += REAL_ADOPTION_POINTS;
-                } else if (operationType == Trigger.isDelete) {
+                } else if (operationType == System.TriggerOperation.BEFORE_DELETE) {
                     counter -= REAL_ADOPTION_POINTS;
                 }
             } else if (adoption.RecordTypeId == recordTypeMap.get(RECORD_TYPE_VIRTUAL)) {
-                if ((operationType == Trigger.isInsert && adoption.Status__c == STATUS_APPROVED) || operationType == Trigger.isUpdate) {
+                if ((operationType == System.TriggerOperation.AFTER_INSERT && adoption.Status__c == STATUS_APPROVED) || operationType == System.TriggerOperation.AFTER_UPDATE) {
                     counter += REAL_ADOPTION_POINTS;
-                } else if (operationType == Trigger.isDelete) {
+                } else if (operationType == System.TriggerOperation.BEFORE_DELETE) {
                     counter -= REAL_ADOPTION_POINTS;
                 }
             } else {
