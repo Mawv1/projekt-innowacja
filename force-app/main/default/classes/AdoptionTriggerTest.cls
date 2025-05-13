@@ -1,77 +1,88 @@
 @IsTest
 public class AdoptionTriggerTest {
 
-    @IsTest
-    static void testChangeFoodPoints() {
-        Shelter__c shelter = new Shelter__c(Name = 'Test Shelter1');
+    private static Person__c createTestPerson() {
+        Person__c person = new Person__c(Name = 'Test Person');
+        insert person;
+        return person;
+    }
+
+    private static Animal__c createTestAnimal() {
+        Shelter__c shelter = new Shelter__c(Name = 'Test Shelter');
         insert shelter;
 
-        Animal__c animal = new Animal__c(Name = 'Test Animal1', Shelter__c = shelter.Id);
+        Animal__c animal = new Animal__c(Name = 'Test Animal', Shelter__c = shelter.Id);
         insert animal;
 
-        Person__c person = new Person__c(Name = 'Test Person1');
-        insert person;
-        
-        Id personId = person.Id;
+        return animal;
+    }
 
-        RecordType rt = [
-            SELECT Id 
-            FROM RecordType 
-            WHERE SObjectType = 'Account' AND Name = 'Person Account' 
-            LIMIT 1
-        ];
+    private static List<Adoption__c> generateAdoptions(Integer realCount, Integer virtualCount) {
+        Person__c person = createTestPerson();
+        Animal__c animal = createTestAnimal();
 
-        Account acc = new Account(
-            RecordTypeId = rt.Id,
-            FirstName = 'Test',
-            LastName = 'User',
-            Person__c = person.Id
-        );
-        insert acc;
+        Map<String, Id> recordTypeMap = AdoptionUtils.getAdoptionRecordTypes();
+        List<Adoption__c> adoptions = new List<Adoption__c>();
 
-        person.Person_Account__c = acc.Id;
-        update person;
-
-        Map<String, Id> rtList = AdoptionTriggerHandler.getAdoptionRecordTypes();
-
-        Integer realCount = 4;
-        Integer virtualCount = 6;
-        Integer expectedFoodPoints = (realCount * 20) + (virtualCount * 10);
-
-        List<Adoption__c> adoptionList = new List<Adoption__c>();
-
-        for (Integer i = 0; i < realCount; ++i) {
-            adoptionList.add(new Adoption__c(
-                Name = 'Test Real ' + i,
-                Adopter__c = acc.Id,
+        for (Integer i = 0; i < realCount; i++) {
+            adoptions.add(new Adoption__c(
+                Name = 'Real Adoption ' + i,
+                Adopter__c = person.Id,
                 Animal__c = animal.Id,
-                Person__c = acc.Person__c,
-                RecordTypeId = rtList.get('Real')
+                RecordTypeId = recordTypeMap.get('Real'),
+                Status__c = 'Approved'
             ));
         }
 
-        for (Integer i = 0; i < virtualCount; ++i) {
-            adoptionList.add(new Adoption__c(
-                Name = 'Test Virtual ' + i,
-                Adopter__c = acc.Id,
+        for (Integer i = realCount; i < realCount + virtualCount; i++) {
+            adoptions.add(new Adoption__c(
+                Name = 'Virtual Adoption ' + i,
+                Adopter__c = person.Id,
                 Animal__c = animal.Id,
-                Person__c = acc.Person__c,
-                RecordTypeId = rtList.get('Virtual')
+                RecordTypeId = recordTypeMap.get('Virtual'),
+                Status__c = 'Approved'
             ));
         }
 
-        // Test.startTest();
-        insert adoptionList;
-        // Test.stopTest();
+        return adoptions;
+    }
 
-        person = [SELECT Food_Points__c FROM Person__c WHERE Id = :personId];
-        System.assertEquals(expectedFoodPoints, person.Food_Points__c, 'Food points after insert are incorrect');
+    @IsTest
+    static void testAdoptionInsert() {
+        Integer realCount = 2;
+        Integer virtualCount = 3;
+        Integer expectedPoints = (realCount * AdoptionTriggerHandler.REAL_ADOPTION_POINTS) +
+                                 (virtualCount * AdoptionTriggerHandler.VIRTUAL_ADOPTION_POINTS);
 
-        // Test.startTest();
-        delete adoptionList;
-        // Test.stopTest();
+        List<Adoption__c> adoptions = generateAdoptions(realCount, virtualCount);
 
-        person = [SELECT Food_Points__c FROM Person__c WHERE Id = :personId];
-        System.assertEquals(0, person.Food_Points__c, 'Food points after delete should be 0');
+        Test.startTest();
+        insert adoptions;
+        Test.stopTest();
+
+        Account acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
+        System.assertEquals(expectedPoints, acc.Food_Points__c, 'Food points after insert are incorrect');
+    }
+
+    @IsTest
+    static void testAdoptionDelete() {
+        Integer realCount = 2;
+        Integer virtualCount = 3;
+        Integer expectedPoints = (realCount * AdoptionTriggerHandler.REAL_ADOPTION_POINTS) +
+                                 (virtualCount * AdoptionTriggerHandler.VIRTUAL_ADOPTION_POINTS);
+
+        List<Adoption__c> adoptions = generateAdoptions(realCount, virtualCount);
+
+        insert adoptions;
+
+        Account acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
+        System.assertEquals(expectedPoints, acc.Food_Points__c, 'Food points after insert are incorrect');
+    
+        Test.startTest();
+        delete adoptions;
+        Test.stopTest();
+
+        acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
+        System.assertEquals(0, acc.Food_Points__c, 'Food points after delete should be 0');
     }
 }
