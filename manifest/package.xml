@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>Animals</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
         <name>ApexClass</name>
@@ -39,6 +43,7 @@
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
+        <members>Animal__c-Animal Layout</members>
         <name>Layout</name>
     </types>
     <types>
