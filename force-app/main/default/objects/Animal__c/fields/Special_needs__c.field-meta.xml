@@ -5,6 +5,66 @@
     <label>Special needs</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
-    <type>LongTextArea</type>
-    <visibleLines>3</visibleLines>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Medication Required</fullName>
+                <default>false</default>
+                <label>Medication Required</label>
+            </value>
+            <value>
+                <fullName>Dietary Restrictions</fullName>
+                <default>false</default>
+                <label>Dietary Restrictions</label>
+            </value>
+            <value>
+                <fullName>Blind or Vision Impaired</fullName>
+                <default>false</default>
+                <label>Blind or Vision Impaired</label>
+            </value>
+            <value>
+                <fullName>Deaf or Hearing Impaired</fullName>
+                <default>false</default>
+                <label>Deaf or Hearing Impaired</label>
+            </value>
+            <value>
+                <fullName>Mobility Assistance Needed</fullName>
+                <default>false</default>
+                <label>Mobility Assistance Needed</label>
+            </value>
+            <value>
+                <fullName>Behavioral Therapy Required</fullName>
+                <default>false</default>
+                <label>Behavioral Therapy Required</label>
+            </value>
+            <value>
+                <fullName>Separation Anxiety</fullName>
+                <default>false</default>
+                <label>Separation Anxiety</label>
+            </value>
+            <value>
+                <fullName>Daily Exercise Supervision</fullName>
+                <default>false</default>
+                <label>Daily Exercise Supervision</label>
+            </value>
+            <value>
+                <fullName>Allergy Management</fullName>
+                <default>false</default>
+                <label>Allergy Management</label>
+            </value>
+            <value>
+                <fullName>Socialization Training</fullName>
+                <default>false</default>
+                <label>Socialization Training</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
 </CustomField>

@@ -4,7 +4,7 @@ private class AdoptionValidationTest {
         Schema.DescribeFieldResult dr = Adoption__c.Status__c.getDescribe();
         for (Schema.PicklistEntry pe : dr.getPicklistValues()) {
             if (pe.isActive()) {
-                return pe.getValue();
+                return pe.getValue();   
             }
         }
         return null;
