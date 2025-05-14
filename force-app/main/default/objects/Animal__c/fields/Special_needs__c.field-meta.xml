@@ -3,7 +3,7 @@
     <fullName>Special_needs__c</fullName>
     <externalId>false</externalId>
     <label>Special needs</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>MultiselectPicklist</type>
     <valueSet>
