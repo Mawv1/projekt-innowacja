@@ -152,7 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <label>Adoption</label>
     <nameField>
         <label>Adoption Name</label>
@@ -160,6 +160,6 @@
     </nameField>
     <pluralLabel>Adoptions</pluralLabel>
     <searchLayouts></searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
