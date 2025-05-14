@@ -56,9 +56,9 @@ public class AdoptionTriggerTest {
 
         List<Adoption__c> adoptions = generateAdoptions(realCount, virtualCount);
 
-        Test.startTest();
+        System.Test.startTest();
         insert adoptions;
-        Test.stopTest();
+        System.Test.stopTest();
 
         Account acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
         System.assertEquals(expectedPoints, acc.Food_Points__c, 'Food points after insert are incorrect');
@@ -78,9 +78,9 @@ public class AdoptionTriggerTest {
         Account acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
         System.assertEquals(expectedPoints, acc.Food_Points__c, 'Food points after insert are incorrect');
     
-        Test.startTest();
+        System.Test.startTest();
         delete adoptions;
-        Test.stopTest();
+        System.Test.stopTest();
 
         acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
         System.assertEquals(0, acc.Food_Points__c, 'Food points after delete should be 0');

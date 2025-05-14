@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <emailDefault>false</emailDefault>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <feedLayout>
         <autocollapsePublisher>true</autocollapsePublisher>
@@ -63,42 +64,8 @@
                 <field>Description</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Animal_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Animal_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Breed__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Color__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Sex__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CreatedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LastModifiedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Photo__c</field>
+                <behavior>Required</behavior>
+                <field>Animal__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -120,6 +87,8 @@
                 <behavior>Edit</behavior>
                 <field>Owner_Email__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Priority</field>
@@ -133,12 +102,16 @@
                 <field>ContactId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SuppliedEmail</field>
+                <behavior>Readonly</behavior>
+                <field>CreatedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LastModifiedById</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Photo_URL__c</field>
+                <field>SuppliedEmail</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -231,9 +204,9 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>true</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hQy00000HLTYN</masterLabel>
+        <masterLabel>00h7S000003T1zT</masterLabel>
         <sizeX>3</sizeX>
-        <sizeY>4</sizeY>
+        <sizeY>3</sizeY>
         <summaryLayoutItems>
             <field>CreatedById</field>
             <posX>0</posX>
@@ -250,14 +223,9 @@
             <posY>1</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
-            <field>Animal_Name__c</field>
-            <posX>1</posX>
-            <posY>2</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
             <field>Description</field>
             <posX>1</posX>
-            <posY>3</posY>
+            <posY>2</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
             <field>Lost_Date__c</field>
@@ -268,16 +236,6 @@
             <field>Last_Seen_Location__c</field>
             <posX>2</posX>
             <posY>1</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Breed__c</field>
-            <posX>2</posX>
-            <posY>2</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Animal_Type__c</field>
-            <posX>2</posX>
-            <posY>3</posY>
         </summaryLayoutItems>
         <summaryLayoutStyle>CaseInteraction</summaryLayoutStyle>
     </summaryLayout>
