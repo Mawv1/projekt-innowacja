@@ -41,10 +41,6 @@
                 <behavior>Edit</behavior>
                 <field>AnnualRevenue</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Test__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -284,10 +280,6 @@
         <fields>ACCOUNT.PC_TITLE</fields>
         <fields>ACCOUNT.PC_EMAIL</fields>
         <relatedList>RelatedPartnerList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Adoption__c.Adopter__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AiMals</fullName>
     <brand>
         <headerColor>#0070D2</headerColor>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
@@ -11,10 +12,10 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Ai:Mals</label>
     <navType>Standard</navType>
-    <!-- <tabs>Ai_Mals__c</tabs>
+    <tabs>Ai_Mals__c</tabs>
     <tabs>Shelter__c</tabs>
     <tabs>Animal__c</tabs>
-    <tabs>Adoption__c</tabs> -->
+    <tabs>Adoption__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Ai_Mals_UtilityBar</utilityBar>
 </CustomApplication>
