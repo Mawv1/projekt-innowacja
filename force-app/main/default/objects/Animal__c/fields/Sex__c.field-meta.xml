@@ -3,7 +3,7 @@
     <fullName>Sex__c</fullName>
     <externalId>false</externalId>
     <label>Sex</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -22,7 +22,7 @@
             </value>
             <value>
                 <fullName>Unknown</fullName>
-                <default>true</default>
+                <default>false</default>
                 <label>Unknown</label>
             </value>
         </valueSetDefinition>
