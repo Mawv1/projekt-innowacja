@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Godziny otwarcia schroniska">
+        <template if:true={openingHours.length}>
+            <ul class="slds-p-horizontal_medium">
+                <template for:each={openingHours} for:item="day">
+                    <li key={day.Id}>
+                        <strong>{day.Day__c}:</strong>
+                        <template if:true={day.Closed__c}>
+                            <span>Nieczynne</span>
+                        </template>
+                        <template if:false={day.Closed__c}>
+                            <span>{day.Open__c} – {day.Close__c}</span>
+                        </template>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error slds-p-horizontal_medium">Błąd podczas ładowania danych</p>
+        </template>
+    </lightning-card>
+</template>
