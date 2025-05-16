@@ -3,7 +3,7 @@
     <fullName>Phone__c</fullName>
     <externalId>false</externalId>
     <label>Phone</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Phone</type>
 </CustomField>
