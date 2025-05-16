@@ -44,6 +44,7 @@
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
+        <members>Shelter__c-Shelter Layout</members>
         <name>Layout</name>
     </types>
     <types>
