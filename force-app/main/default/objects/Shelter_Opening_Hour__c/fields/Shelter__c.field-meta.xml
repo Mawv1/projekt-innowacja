@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shelter__c</fullName>
+    <externalId>false</externalId>
+    <label>Shelter</label>
+    <referenceTo>Shelter__c</referenceTo>
+    <relationshipLabel>Shelter Opening Hours</relationshipLabel>
+    <relationshipName>Shelter_Opening_Hours</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>
