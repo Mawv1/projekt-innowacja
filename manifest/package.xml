@@ -6,13 +6,22 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>shelterOpenHours</members>
+        <members>shelterMap</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
+        <members>AnimalTriggerHandler</members>
+        <members>ShelterHoursController</members>
+        <members>ShelterMapController</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>
+        <members>AnimalTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -21,13 +30,19 @@
         <members>Animal__c</members>
         <members>Adoption__c</members>
         <members>Shelter__c</members>
+        <members>Shelter_Opening_Hour__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
+        <members>Shelter__c-Shelter Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
     </types>
     <types>
         <members>AiMals</members>
@@ -40,6 +55,10 @@
         <types>
         <members>*</members>
         <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>Populate_Shelter_Day_Key</members>
+        <name>Flow</name>
     </types>
     <version>56.0</version>
 </Package>
