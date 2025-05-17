@@ -2,16 +2,8 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>Animals</members>
+        <members>Ai_Mals_UtilityBar</members>
         <name>FlexiPage</name>
-    </types>
-    <types>
-        <members>AdoptionTriggerHandler</members>
-        <members>AdoptionTriggerTest</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
-        <members>AdoptionTrigger</members>
-        <name>ApexTrigger</name>
     </types>
     <types>
         <members>AdoptionTriggerHandler</members>
@@ -32,25 +24,13 @@
         <members>Person__c</members>
         <members>Shelter_Opening_Hour__c</members>
         <name>CustomObject</name>
-        </types>  
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexClass</name>
-    </types>
+    </types>  
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
         <members>Shelter__c-Shelter Layout</members>
         <name>Layout</name>
-    </types>
-    <types>
-        <members>AdoptionValidationTest</members>
-        <name>ApexClass</name>
     </types>
     <types>
         <members>*</members>
@@ -61,16 +41,16 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Ai_Mals_UtilityBar</members>
-        <name>FlexiPage</name>
-    </types>
-    <types>
         <members>Admin</members>
         <name>Profile</name>
     </types>
         <types>
         <members>*</members>
         <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>Populate_Shelter_Day_Key</members>
+        <name>Flow</name>
     </types>
     <version>56.0</version>
 </Package>
