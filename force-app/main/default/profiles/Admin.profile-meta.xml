@@ -29,14 +29,6 @@
         <apexClass>AdoptionValidationTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>MyFirstClass</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -531,6 +523,7 @@
         <layout>Animal__c-Animal Layout</layout>
         <recordType>Animal__c.Animal_RT</recordType>
     </layoutAssignments>
+    <layoutAssignments>
         <layout>Case-Case Layout</layout>
     </layoutAssignments>
     <objectPermissions>
