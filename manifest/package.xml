@@ -46,6 +46,11 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>Account.Edit_Adopter_info</members>
+        <members>Animal__c.Edit_Animal_info</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
         <members>AiMals</members>
         <name>CustomApplication</name>
     </types>
