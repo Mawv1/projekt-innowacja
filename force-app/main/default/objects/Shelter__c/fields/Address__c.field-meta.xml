@@ -4,7 +4,7 @@
     <description>Address of shelter</description>
     <externalId>false</externalId>
     <label>Address</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>TextArea</type>
 </CustomField>
