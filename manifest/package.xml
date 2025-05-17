@@ -6,6 +6,10 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>shelterOpenHours</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
