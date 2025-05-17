@@ -14,12 +14,14 @@
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
+        <members>AnimalTriggerHandler</members>
         <members>ShelterHoursController</members>
         <members>ShelterMapController</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>
+        <members>AnimalTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -31,7 +33,7 @@
         <members>Person__c</members>
         <members>Shelter_Opening_Hour__c</members>
         <name>CustomObject</name>
-    </types>  
+    </types>
     <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
