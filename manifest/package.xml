@@ -30,8 +30,9 @@
         <members>Adoption__c</members>
         <members>Shelter__c</members>
         <members>Person__c</members>
+        <members>Shelter_Opening_Hour__c</members>
         <name>CustomObject</name>
-    </types>
+        </types>  
     <types>
         <members>*</members>
         <name>ApexTrigger</name>

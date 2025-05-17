@@ -3,18 +3,26 @@
         <template if:true={openingHours.length}>
             <ul class="slds-p-horizontal_medium">
                 <template for:each={openingHours} for:item="day">
-                    <li key={day.Id}>
-                        <strong>{day.Day__c}:</strong>
-                        <template if:true={day.Closed__c}>
-                            <span>Nieczynne</span>
-                        </template>
-                        <template if:false={day.Closed__c}>
-                            <span>{day.Open__c} – {day.Close__c}</span>
-                        </template>
+                    <li key={day.Id} class="slds-grid slds-p-vertical_x-small">
+                        <!-- Day name (fixed width) -->
+                        <div class="slds-col slds-size_1-of-5 slds-text-align_left">
+                            <strong>{day.Day__c}:</strong>
+                        </div>
+
+                        <!-- Hours or Nieczynne -->
+                        <div class="slds-col slds-size_2-of-5 slds-text-align_left">
+                            <template if:true={day.Closed__c}>
+                                <span class="slds-text-color_error">Nieczynne</span>
+                            </template>
+                            <template if:false={day.Closed__c}>
+                                <span>{day.openTime} – {day.closeTime}</span>
+                            </template>
+                        </div>
                     </li>
                 </template>
             </ul>
         </template>
+
         <template if:true={error}>
             <p class="slds-text-color_error slds-p-horizontal_medium">Błąd podczas ładowania danych</p>
         </template>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Address__c</fullName>
-    <description>Address of shelter</description>
+    <fullName>Closed__c</fullName>
+    <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>Address</label>
-    <required>false</required>
+    <label>Closed</label>
     <trackTrending>false</trackTrending>
-    <type>TextArea</type>
+    <type>Checkbox</type>
 </CustomField>

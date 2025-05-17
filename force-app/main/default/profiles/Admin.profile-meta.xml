@@ -531,7 +531,6 @@
         <layout>Animal__c-Animal Layout</layout>
         <recordType>Animal__c.Animal_RT</recordType>
     </layoutAssignments>
-    <layoutAssignments>
         <layout>Case-Case Layout</layout>
     </layoutAssignments>
     <objectPermissions>
