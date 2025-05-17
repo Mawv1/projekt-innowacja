@@ -13,6 +13,8 @@
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
+        <members>ShelterHoursController</members>
+        <members>ShelterMapController</members>
         <name>ApexClass</name>
     </types>
     <types>
