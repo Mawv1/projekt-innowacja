@@ -6,17 +6,6 @@ export default class ShelterMap extends LightningElement {
     mapMarkers = [];
     currentShelterId;
 
-    currentMapIcon = {
-        path: "M224.5 111c0-19.9-16.1-36-36-36-19.9 0-36 16.1-36 36s16.1 36 36 36c19.9 0 36-16.1 36-36zm-140.7 5.8c-14.4-3-28.7 1.5-39.2 11.5-10.5 10-14.7 24.2-11 37.8 3.6 13.6 13.9 22.6 27.5 25.6 14.2 3.1 30.1-1.9 41.4-12.7 12-11.2 15.3-28.1 10.8-42.7-4.8-16.3-19-22.2-29.5-19.5zm132.4 1.5c-10.3-11.2-24.8-16.2-39.2-13.8-15.4 2.6-26.7 15-28.4 33.3-1.5 17.1 7 34.5 21.8 45.3 14.8 10.8 33 11.3 46.4 1.1 14.3-11.2 18.4-34.7-.6-56zm-45.6 92.6c-22.2-8.5-55.8-9-79.5 6.3-23.6 15.4-28.5 41.4-10.7 53.8 17.8 12.3 41.4 9.5 67.8-5.1 26.4-14.6 36.4-36.5 27.7-54.9-2.9-6-8-10.5-15.3-11.3z",
-        fillColor: '#4CAF50',   // greenish for nature/animals
-        fillOpacity: 1,
-        strokeWeight: 0,
-        scale: 0.06,
-        anchor: { x: 20, y: 20 }
-    };
-
-
-
     @wire(getSheltersInSameCity, { shelterId: '$recordId' })
     wiredShelters({ error, data }) {
         if (data) {
