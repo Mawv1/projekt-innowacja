@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Animals</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Animal__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Animals</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Animal__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Adoptions</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Adoption__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Adoptions</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Adoption__c</pageOrSobjectType>
+    </actionOverrides>
     <brand>
-        <headerColor>#5B2D04</headerColor>
-        <logo>ac416c014b834e6baee2fa96288493de</logo>
-        <logoVersion>1</logoVersion>
+        <headerColor>#0070D2</headerColor>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
     <formFactors>Small</formFactors>
@@ -13,9 +47,8 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Ai:Mals</label>
     <navType>Standard</navType>
-    <tabs>Ai_Mals__c</tabs>
-    <tabs>Shelter__c</tabs>
     <tabs>Animal__c</tabs>
+    <tabs>standard-Account</tabs>
     <tabs>Adoption__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Ai_Mals_UtilityBar</utilityBar>

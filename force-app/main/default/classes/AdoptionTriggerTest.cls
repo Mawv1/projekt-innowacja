@@ -1,10 +1,15 @@
 @IsTest
 public class AdoptionTriggerTest {
 
-    private static Person__c createTestPerson() {
-        Person__c person = new Person__c(Name = 'Test Person');
-        insert person;
-        return person;
+    private static Account createTestAccount() {
+        Account acc = new Account(
+            FirstName = 'Test',
+            LastName = 'account',
+            PersonEmail = 'test@wp.pl',
+            Phone = '123123123'
+        );
+        insert acc;
+        return acc;
     }
 
     private static Animal__c createTestAnimal() {
@@ -18,28 +23,18 @@ public class AdoptionTriggerTest {
     }
 
     private static List<Adoption__c> generateAdoptions(Integer realCount, Integer virtualCount) {
-        Person__c person = createTestPerson();
+        Account account = createTestAccount();
         Animal__c animal = createTestAnimal();
 
         Map<String, Id> recordTypeMap = AdoptionUtils.getAdoptionRecordTypes();
         List<Adoption__c> adoptions = new List<Adoption__c>();
 
-        for (Integer i = 0; i < realCount; i++) {
+        for (Integer i = 0; i < realCount + virtualCount; i++) {
             adoptions.add(new Adoption__c(
                 Name = 'Real Adoption ' + i,
-                Adopter__c = person.Id,
+                Adopter__c = account.Id,
                 Animal__c = animal.Id,
-                RecordTypeId = recordTypeMap.get('Real'),
-                Status__c = 'Approved'
-            ));
-        }
-
-        for (Integer i = realCount; i < realCount + virtualCount; i++) {
-            adoptions.add(new Adoption__c(
-                Name = 'Virtual Adoption ' + i,
-                Adopter__c = person.Id,
-                Animal__c = animal.Id,
-                RecordTypeId = recordTypeMap.get('Virtual'),
+                Adoption_type__c = i < realCount ? 'Real' : 'Virtual',
                 Status__c = 'Approved'
             ));
         }
@@ -84,5 +79,41 @@ public class AdoptionTriggerTest {
 
         acc = [SELECT Food_Points__c FROM Account WHERE Id = :adoptions.get(0).Adopter__c];
         System.assertEquals(0, acc.Food_Points__c, 'Food points after delete should be 0');
+    }
+
+    @isTest
+    static void testSendStatusChangeEmails() {
+        Shelter__c shelter = new Shelter__c(Name = 'Testowe Schronisko');
+        insert shelter;
+
+        Id personAccountRtId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('PersonAccount').getRecordTypeId();
+        Account adopter = new Account(
+            RecordTypeId = personAccountRtId,
+            FirstName = 'John',
+            LastName = 'Doe',
+            PersonEmail = 'juszczykkrystian2003@gmail.com'
+        );
+        insert adopter;
+
+        Animal__c animal = new Animal__c(
+            Name = 'Rex',
+            Shelter__c = shelter.Id
+        );
+        insert animal;
+
+        Adoption__c adoption = new Adoption__c(
+            Adopter__c = adopter.Id,
+            Animal__c = animal.Id,
+            Status__c = 'In progress'
+        );
+        insert adoption;
+
+        // Update of the adoption record to trigger the email sending
+        adoption.Status__c = 'Approved';
+        update adoption;
+    
+        // Verify that the email was sent
+        Integer results = Limits.getEmailInvocations();
+        System.assertNotEquals(0, results, 'E-mail powinien zostać wysłany.');
     }
 }

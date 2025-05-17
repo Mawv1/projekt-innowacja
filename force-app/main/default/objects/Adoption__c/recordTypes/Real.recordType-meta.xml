@@ -4,6 +4,17 @@
     <active>true</active>
     <label>Real</label>
     <picklistValues>
+        <picklist>Adoption_type__c</picklist>
+        <values>
+            <fullName>Real</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Status__c</picklist>
         <values>
             <fullName>Approved</fullName>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Status__c</fullName>
+    <fullName>Animal_Type__c</fullName>
     <externalId>false</externalId>
-    <label>Status</label>
+    <label>Animal Type</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -11,14 +13,19 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>In progress</fullName>
-                <default>true</default>
-                <label>In progress</label>
+                <fullName>Dog</fullName>
+                <default>false</default>
+                <label>Dog</label>
             </value>
             <value>
-                <fullName>Approved</fullName>
+                <fullName>Cat</fullName>
                 <default>false</default>
-                <label>Approved</label>
+                <label>Cat</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
             </value>
         </valueSetDefinition>
     </valueSet>
