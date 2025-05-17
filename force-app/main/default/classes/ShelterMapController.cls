@@ -1,5 +1,4 @@
 public with sharing class ShelterMapController {
-    public with sharing class ShelterMapController {
     @AuraEnabled(cacheable=true)
     public static List<Shelter__c> getSheltersInSameCity(Id shelterId) {
         Shelter__c current = [SELECT Id, Name, City__c FROM Shelter__c WHERE Id = :shelterId LIMIT 1];
@@ -10,5 +9,4 @@ public with sharing class ShelterMapController {
             WHERE City__c = :current.City__c
         ];
     }
-}
 }
