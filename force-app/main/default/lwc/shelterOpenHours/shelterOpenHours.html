@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Godziny otwarcia schroniska">
+    <lightning-card title="SHELTER OPENING HOURS" icon-name="utility:clock">
         <template if:true={openingHours.length}>
             <ul class="slds-p-horizontal_medium">
                 <template for:each={openingHours} for:item="day">
@@ -9,10 +9,10 @@
                             <strong>{day.Day__c}:</strong>
                         </div>
 
-                        <!-- Hours or Nieczynne -->
+                        <!-- Hours or Closed -->
                         <div class="slds-col slds-size_2-of-5 slds-text-align_left">
                             <template if:true={day.Closed__c}>
-                                <span class="slds-text-color_error">Nieczynne</span>
+                                <span class="slds-text-color_error">Closed</span>
                             </template>
                             <template if:false={day.Closed__c}>
                                 <span>{day.openTime} – {day.closeTime}</span>
