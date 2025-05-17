@@ -7,6 +7,7 @@
     </types>
     <types>
         <members>shelterOpenHours</members>
+        <members>shelterMap</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
