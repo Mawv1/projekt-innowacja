@@ -12,7 +12,6 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>AdoptionStatusUpdateTrigger</members>
         <members>AdoptionTrigger</members>
         <name>ApexTrigger</name>
     </types>
