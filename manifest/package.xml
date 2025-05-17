@@ -7,20 +7,13 @@
     <types>
         <members>AdoptionTriggerHandler</members>
         <members>AdoptionTriggerTest</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
-        <members>AdoptionTrigger</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>AdoptionTriggerHandler</members>
-        <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
+        <members>AnimalTriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>
+        <members>AnimalTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -33,23 +26,11 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
         <members>Shelter__c-Shelter Layout</members>
         <name>Layout</name>
-    </types>
-    <types>
-        <members>AdoptionValidationTest</members>
-        <name>ApexClass</name>
     </types>
     <types>
         <members>*</members>
