@@ -642,11 +642,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Account.temp</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>Adoption__c.Real</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
