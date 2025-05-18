@@ -1,12 +1,13 @@
-name: Deploy to Integration
+name: Test Deployment to Integration
 
 on:
   push:
-    branches:
+    branches-ignore:
       - Develop
+      - main
 
 jobs:
-  deploy-branch-to-int-org:
+  validate-branch-to-int-org:
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
 
@@ -21,8 +22,9 @@ jobs:
         with:
           sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
 
-      - name: Deploy to Integration Org
+      - name: Validate-Only Deploy to Integration Org
         run: |
-          #Enable person accounts!
+          # This will perform a dry-run (validate-only) deploy
           sf project deploy start \
-            --source-dir force-app/main/default
+            --source-dir force-app/main/default \
+            --dry-run 

@@ -5,6 +5,7 @@
         <members>Ai_Mals_UtilityBar</members>
         <members>Adoptions</members>
         <members>Shelter</members>
+        <members>Shelter_Opening_Hours</members>
         <name>FlexiPage</name>
     </types>
     <types>
