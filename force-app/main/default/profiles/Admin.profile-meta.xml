@@ -546,21 +546,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Shelter__c.Address__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Shelter__c.Capacity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Shelter__c.City__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Shelter__c.Current_Animal_Count__c</field>
         <readable>true</readable>
@@ -601,13 +586,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-Case Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Shelter__c-Shelter Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Shelter__c-Shelter Layout</layout>
-        <recordType>Shelter__c.Shelter_RT</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Shelter__c-Shelter Layout</layout>
