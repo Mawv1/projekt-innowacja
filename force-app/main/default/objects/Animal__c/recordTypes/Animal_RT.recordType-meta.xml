@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Animal_RT</fullName>
+    <active>true</active>
+    <label>Animal RT</label>
+    <picklistValues>
+        <picklist>Sex__c</picklist>
+        <values>
+            <fullName>Female</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Male</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Special_needs__c</picklist>
+        <values>
+            <fullName>Allergy Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Behavioral Therapy Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blind or Vision Impaired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Daily Exercise Supervision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deaf or Hearing Impaired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dietary Restrictions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medication Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobility Assistance Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Separation Anxiety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Socialization Training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Adopted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Reserved</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -16,5 +16,5 @@
     <protected>false</protected>
     <showsLocation>true</showsLocation>
     <showsStatus>true</showsStatus>
-    <url>http://www.genwatt.com/genwatt/billing.htm?actname={!Account_Name}</url>
+    <url>http://www.genwatt.com/genwatt/billing.htm?actname={!Account.Name}</url>
 </WebLink>

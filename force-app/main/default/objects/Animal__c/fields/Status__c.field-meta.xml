@@ -12,7 +12,7 @@
             <sorted>false</sorted>
             <value>
                 <fullName>Available</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Available</label>
             </value>
             <value>

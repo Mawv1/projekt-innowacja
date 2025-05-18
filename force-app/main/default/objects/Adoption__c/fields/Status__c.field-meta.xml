@@ -3,7 +3,7 @@
     <fullName>Status__c</fullName>
     <externalId>false</externalId>
     <label>Status</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -12,7 +12,7 @@
             <sorted>false</sorted>
             <value>
                 <fullName>In progress</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>In progress</label>
             </value>
             <value>

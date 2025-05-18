@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hours_must_be_filled_if_not_closed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  Closed__c = FALSE,
+  OR(
+    ISBLANK(Open__c),
+    ISBLANK(Close__c),
+    Open__c &gt;= Close__c
+  )
+)</errorConditionFormula>
+    <errorMessage>Please fill in both open and close hour fields!</errorMessage>
+</ValidationRule>
