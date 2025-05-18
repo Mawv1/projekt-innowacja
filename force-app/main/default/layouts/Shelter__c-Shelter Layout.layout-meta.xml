@@ -28,6 +28,10 @@
                 <behavior>Required</behavior>
                 <field>Phone__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Location__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
