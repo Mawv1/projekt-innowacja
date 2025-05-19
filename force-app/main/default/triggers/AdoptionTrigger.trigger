@@ -1,3 +1,27 @@
-trigger AdoptionTrigger on Adoption__c (after insert, after update, before delete) {
-    AdoptionTriggerHandler.changeFoodPoints(Trigger.new, Trigger.operationType);
+trigger AdoptionTrigger on Adoption__c (before insert ,after insert, before update, after update, before delete) {
+    switch on Trigger.operationType {
+        when BEFORE_UPDATE {
+            AdoptionTriggerHandler.changeAdoptionType(Trigger.new);
+        }
+        
+        when BEFORE_INSERT {
+            AdoptionTriggerHandler.changeAdoptionType(Trigger.new);
+        }
+        
+        when AFTER_UPDATE {
+            AdoptionTriggerHandler.changeFoodPoints(Trigger.new, Trigger.oldMap, Trigger.operationType);
+            AdoptionTriggerHandler.sendStatusChangeEmails(Trigger.new, Trigger.oldMap);
+            AdoptionTriggerHandler.changeAnimalStatus(Trigger.new, Trigger.operationType);
+        }
+
+        when AFTER_INSERT {
+            AdoptionTriggerHandler.changeFoodPoints(Trigger.new, Trigger.oldMap, Trigger.operationType);
+            AdoptionTriggerHandler.changeAnimalStatus(Trigger.new, Trigger.operationType);
+        }
+
+        when BEFORE_DELETE {
+            AdoptionTriggerHandler.changeFoodPoints(Trigger.old, Trigger.oldMap, Trigger.operationType);
+            AdoptionTriggerHandler.changeAnimalStatus(Trigger.old, Trigger.operationType);
+        }
+    }
 }

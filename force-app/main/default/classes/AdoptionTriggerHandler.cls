@@ -1,29 +1,32 @@
 public with sharing class AdoptionTriggerHandler {
-    public static final String RECORD_TYPE_REAL = 'Real';
+    public static final String ADOPTION_TYPE_REAL = 'Real';
     public static final String STATUS_APPROVED = 'Approved';
-    public static final String RECORD_TYPE_VIRTUAL = 'Virtual';
+    public static final String STATUS_IN_PROGRESS = 'In progress';
+    public static final String ADOPTION_TYPE_VIRTUAL = 'Virtual';
     public static final Integer FOOD_GIFT_GOAL = 30;
     public static final Integer REAL_ADOPTION_POINTS = 20;
     public static final Integer VIRTUAL_ADOPTION_POINTS = 10;
     
-    public static void changeFoodPoints(List<Adoption__c> adoptionList, System.TriggerOperation operationType) {
-        Map<String, Id> recordTypeMap = AdoptionUtils.getAdoptionRecordTypes();
+    public static void changeFoodPoints(List<Adoption__c> adoptionList, Map<Id, Adoption__c> oldMap, System.TriggerOperation operationType) {
         Map<Id, Integer> userFoodPointsMap = new Map<Id, Integer>();
         
          for (Adoption__c adoption : adoptionList) {
             Integer counter = 0;
-            
-            if (adoption.RecordTypeId == recordTypeMap.get(RECORD_TYPE_REAL)) {
-                if ((operationType == System.TriggerOperation.AFTER_INSERT && adoption.Status__c == STATUS_APPROVED) || operationType == System.TriggerOperation.AFTER_UPDATE) {
+             
+            if (adoption.Adoption_type__c == ADOPTION_TYPE_REAL) {
+                if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) 
+                    && adoption.Status__c == STATUS_APPROVED) {
                     counter += REAL_ADOPTION_POINTS;
-                } else if (operationType == System.TriggerOperation.BEFORE_DELETE) {
+                } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && adoption.Status__c == STATUS_APPROVED) ||
+                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c && adoption.Status__c == STATUS_IN_PROGRESS)) {
                     counter -= REAL_ADOPTION_POINTS;
                 }
-            } else if (adoption.RecordTypeId == recordTypeMap.get(RECORD_TYPE_VIRTUAL)) {
-                if ((operationType == System.TriggerOperation.AFTER_INSERT && adoption.Status__c == STATUS_APPROVED) || operationType == System.TriggerOperation.AFTER_UPDATE) {
-                    counter += REAL_ADOPTION_POINTS;
-                } else if (operationType == System.TriggerOperation.BEFORE_DELETE) {
-                    counter -= REAL_ADOPTION_POINTS;
+            } else if (adoption.Adoption_type__c == ADOPTION_TYPE_VIRTUAL) {
+                if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) && adoption.Status__c == STATUS_APPROVED) {
+                    counter += VIRTUAL_ADOPTION_POINTS;
+                } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && adoption.Status__c == STATUS_APPROVED) ||
+                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c && adoption.Status__c == STATUS_IN_PROGRESS)) {
+                    counter -= VIRTUAL_ADOPTION_POINTS;
                 }
             } else {
             	continue;    
@@ -50,12 +53,50 @@ public with sharing class AdoptionTriggerHandler {
      
         update adopterList;
     }
+
+    public static void changeAnimalStatus(List<Adoption__c> adoptionList, System.TriggerOperation operationType) {
+        Map<Id, String> animalStatusMap = new Map<Id, String>(); 
+        for (Adoption__c adoption : adoptionList) {
+            Id animal = adoption.Animal__c;
+
+            if (operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) {
+                if (adoption.Status__c == STATUS_APPROVED) {
+                    animalStatusMap.put(animal, AnimalTriggerHandler.ANIMAL_STATUS_ADOPTED);
+                } else {
+                    animalStatusMap.put(animal, AnimalTriggerHandler.ANIMAL_STATUS_RESERVED);
+                }
+            } else if (operationType == System.TriggerOperation.BEFORE_DELETE) {
+                animalStatusMap.put(animal, AnimalTriggerHandler.ANIMAL_STATUS_AVAILABLE);
+            }
+        }
+
+        List<Animal__c> animalList = [SELECT Id, Status__c FROM Animal__c WHERE Id IN :animalStatusMap.keySet()];
+
+        for (Animal__c animal : animalList) {
+            animal.Status__c = animalStatusMap.get(animal.Id);
+        }
+
+        update animalList;
+    }
+
+    public static void changeAdoptionType(List<Adoption__c> adoptionList) {
+        Map<String, Id> recordTypeMap = AdoptionUtils.getAdoptionRecordTypes();
+
+        for (Adoption__c adoption : adoptionList) {
+            adoption.RecordTypeId = recordTypeMap.get(adoption.Adoption_type__c);
+        }
+    }
   
     public static void sendStatusChangeEmails(List<Adoption__c> newList, Map<Id, Adoption__c> oldMap) {
         List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
         // Construct the logo URL from the static resource
-        String logoUrl = URL.getOrgDomainUrl().toExternalForm() + '/resource/ShelterLogo';
+        String logoUrl = 'https://cw-inn--innkj.sandbox.my.salesforce.com/sfc/dist/version/' + 
+                        'renditionDownload?rendition=ORIGINAL_Png&versionId=068KJ000000W6J5' + 
+                        '&operationContext=DELIVERY&contentId=05TKJ000000tpVj&page=0&d=%2Fa' + 
+                        '%2FKJ0000008W3v%2FwM._RDR_0r1eoTbDIegF6HF71kgp8OjCtdgr0urMong&oid=' + 
+                        '00DKJ000000H0PN&dpt=null&viewId&fbclid=IwZXh0bgNhZW0CMTEAAR5T8dS_G' + 
+                        '_Ojtaql8bFikjnIr4kiut2hGxtqdsVwpYs458AY413uNM6YS1r1Iw_aem_bqpMQ7at1hpBynQgg8s5aw';
 
         // Collect Adoption__c record IDs
         Set<Id> adoptionIds = new Set<Id>();

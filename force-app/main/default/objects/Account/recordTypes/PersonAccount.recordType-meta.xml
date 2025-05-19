@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>temp</fullName>
+    <fullName>PersonAccount</fullName>
     <active>true</active>
-    <label>temp</label>
+    <description>Record Type for Person Accounts</description>
+    <label>Person Account</label>
     <picklistValues>
         <picklist>AccountSource</picklist>
         <values>
