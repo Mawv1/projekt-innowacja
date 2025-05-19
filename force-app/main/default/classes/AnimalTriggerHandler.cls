@@ -1,5 +1,7 @@
 public with sharing class AnimalTriggerHandler {
-    public static final String STATUS_ADOPTED = 'Adopted';
+    public static final String ANIMAL_STATUS_ADOPTED = 'Adopted';
+    public static final String ANIMAL_STATUS_RESERVED = 'Reserved';
+    public static final String ANIMAL_STATUS_AVAILABLE = 'Available';
 
 
     public static void updateUnadoptedAnimalCounts(List<Animal__c> newAnimalList, List<Animal__c> oldAnimalList, System.TriggerOperation operationType) {
@@ -49,16 +51,17 @@ public with sharing class AnimalTriggerHandler {
     }
 
     public static void updateAdoptedAnimalCounts(List<Animal__c> animalList, Map<Id, Animal__c> oldMap, System.TriggerOperation operationType) {
+        
         Map<Id, Integer> shelterAnimalCountMap = new Map<Id, Integer>();
 
         for (Animal__c animal : animalList) {
             Integer counter = 0;
 
             if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) 
-                && animal.Status__c == STATUS_ADOPTED) {
+                && animal.Status__c == ANIMAL_STATUS_ADOPTED) {
                 counter++;
-            } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && animal.Status__c == STATUS_ADOPTED)
-                || (operationType == System.TriggerOperation.AFTER_UPDATE && animal.Status__c != oldMap.get(animal.Id).Status__c && animal.Status__c == STATUS_ADOPTED)) {
+            } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && animal.Status__c == ANIMAL_STATUS_ADOPTED)
+                || (operationType == System.TriggerOperation.AFTER_UPDATE && animal.Status__c != oldMap.get(animal.Id).Status__c && oldMap.get(animal.Id).Status__c == ANIMAL_STATUS_ADOPTED)) {
                 counter--;
             } else {
                 continue;
@@ -74,7 +77,7 @@ public with sharing class AnimalTriggerHandler {
         List<Shelter__c> shelterList = [SELECT Id, Adopted_Animal_Count__c FROM Shelter__c WHERE Id IN :shelterAnimalCountMap.keySet()];
 
         for (Shelter__c shelter : shelterList) {
-            shelter.Adopted_Animal_Count__c = shelterAnimalCountMap.get(shelter.Id);
+            shelter.Adopted_Animal_Count__c += shelterAnimalCountMap.get(shelter.Id);
         }
             
 

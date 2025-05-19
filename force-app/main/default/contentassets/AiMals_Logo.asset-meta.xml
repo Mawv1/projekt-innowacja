@@ -2,7 +2,7 @@
 <ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
     <isVisibleByExternalUsers>false</isVisibleByExternalUsers>
     <language>en_US</language>
-    <masterLabel>ac416c014b834e6baee2fa96288493de</masterLabel>
+    <masterLabel>AiMals_Logo</masterLabel>
     <relationships>
         <organization>
             <access>VIEWER</access>

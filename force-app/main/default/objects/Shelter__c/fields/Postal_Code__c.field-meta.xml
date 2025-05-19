@@ -3,7 +3,7 @@
     <fullName>Postal_Code__c</fullName>
     <externalId>false</externalId>
     <label>Postal Code</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>TextArea</type>
 </CustomField>

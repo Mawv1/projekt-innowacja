@@ -1,7 +1,11 @@
 @IsTest
 public class AnimalTriggerTest {
     private static Shelter__c createShelter() {
-        Shelter__c shelter = new Shelter__c(Name = 'Test Shelter');
+        Shelter__c shelter = new Shelter__c(
+            Name = 'Test Shelter',
+            Location__Latitude__s = 52.2297,
+            Location__Longitude__s = 21.0122
+        );
         insert shelter;
 
         return shelter;
@@ -16,7 +20,7 @@ public class AnimalTriggerTest {
                     Shelter__c = shelter.Id
                 );
             if (i < countAdopted) {
-                animal.Status__c = AnimalTriggerHandler.STATUS_ADOPTED;
+                animal.Status__c = AnimalTriggerHandler.ANIMAL_STATUS_ADOPTED;
             }
 
             animals.add(animal);

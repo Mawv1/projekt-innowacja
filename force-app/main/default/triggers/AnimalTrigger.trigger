@@ -2,7 +2,7 @@ trigger AnimalTrigger on Animal__c (after insert, after update, after delete, af
     
         switch on Trigger.operationType {
             when BEFORE_DELETE {
-                AnimalTriggerHandler.updateAdoptedAnimalCounts(Trigger.new, Trigger.oldMap, Trigger.operationType);
+                AnimalTriggerHandler.updateAdoptedAnimalCounts(Trigger.old, Trigger.oldMap, Trigger.operationType);
             }
             when AFTER_DELETE {
                 AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);

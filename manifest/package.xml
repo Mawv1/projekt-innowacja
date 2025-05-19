@@ -9,6 +9,20 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>Animal__c.*</members>
+        <members>Adoption__c.*</members>
+        <members>Shelter__c.*</members>
+        <members>Account.*</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>Animal__c</members>
+        <members>Adoption__c</members>
+        <members>Shelter__c</members>
+        <members>Account</members>
+        <name>SearchLayouts</name>
+    </types>
+    <types>
         <members>shelterOpenHours</members>
         <members>shelterMap</members>
         <name>LightningComponentBundle</name>

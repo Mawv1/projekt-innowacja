@@ -3,7 +3,7 @@
     <fullName>City__c</fullName>
     <externalId>false</externalId>
     <label>City</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>TextArea</type>
 </CustomField>

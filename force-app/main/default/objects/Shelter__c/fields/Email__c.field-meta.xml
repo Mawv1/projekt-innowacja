@@ -3,7 +3,7 @@
     <fullName>Email__c</fullName>
     <externalId>false</externalId>
     <label>Email</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Email</type>
     <unique>false</unique>
