@@ -14,9 +14,7 @@ public class AdoptionTriggerTest {
 
     private static Animal__c createTestAnimal() {
         Shelter__c shelter = new Shelter__c(
-            Name = 'Test Shelter',
-            Location__Latitude__s = 52.2297,
-            Location__Longitude__s = 21.0122
+            Name = 'Test Shelter'
         );
         insert shelter;
 

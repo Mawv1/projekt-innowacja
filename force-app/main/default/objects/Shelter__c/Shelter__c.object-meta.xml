@@ -168,7 +168,6 @@
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
-        <searchResultsAdditionalFields xsi:nil></searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Phone__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Adopted_Animal_Count__c</searchResultsAdditionalFields>

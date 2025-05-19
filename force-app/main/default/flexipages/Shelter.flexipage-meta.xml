@@ -21,16 +21,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.City__c</fieldItem>
-                <identifier>RecordCity_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Email__c</fieldItem>
                 <identifier>RecordEmail_cField</identifier>
             </fieldInstance>
@@ -200,26 +190,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.City__c</fieldItem>
-                <identifier>RecordCity_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Postal_Code__c</fieldItem>
-                <identifier>RecordPostal_Code_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.LastModifiedById</fieldItem>
                 <identifier>RecordLastModifiedByIdField</identifier>
             </fieldInstance>
@@ -266,16 +236,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Current_Animal_Count__c</fieldItem>
                 <identifier>RecordCurrent_Animal_Count_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Location__c</fieldItem>
-                <identifier>RecordLocation__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-5e472bd9-64d6-4f0e-9c7a-4267c36f58dc</name>
