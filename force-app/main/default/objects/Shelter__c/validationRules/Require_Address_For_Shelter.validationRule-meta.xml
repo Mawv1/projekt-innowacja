@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Address_For_Shelter</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+ISBLANK( Address__City__s ),
+ISBLANK( Address__Street__s ),
+ISBLANK( Address__PostalCode__s )
+)</errorConditionFormula>
+    <errorMessage>Provide proper address for shelter!</errorMessage>
+</ValidationRule>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionOverrides>
         <actionName>Accept</actionName>
         <type>Default</type>
@@ -163,12 +163,12 @@
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <searchResultsAdditionalFields>City__c</searchResultsAdditionalFields>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
+        <searchResultsAdditionalFields xsi:nil></searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Phone__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Adopted_Animal_Count__c</searchResultsAdditionalFields>

@@ -24,10 +24,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Address__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Email__c</field>
             </layoutItems>
             <layoutItems>
@@ -38,11 +34,19 @@
                 <behavior>Required</behavior>
                 <field>Phone__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Address__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Current_Animal_Count__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
