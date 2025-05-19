@@ -2,7 +2,6 @@ name: Test Deployment to Integration
 
 on:
   pull_request:
-    types: [opened, reopened]
 
 jobs:
   validate-branch-to-int-org:
