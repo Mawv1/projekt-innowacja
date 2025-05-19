@@ -8,6 +8,14 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>City__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Postal_Code__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Location__c</field>
             </layoutItems>
             <layoutItems>
@@ -69,6 +77,8 @@
     </layoutSections>
     <miniLayout>
         <fields>Location__c</fields>
+        <fields>City__c</fields>
+        <fields>Postal_Code__c</fields>
     </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

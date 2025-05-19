@@ -6,6 +6,7 @@
         <members>Adoptions</members>
         <members>Shelter</members>
         <members>Shelter_Opening_Hours</members>
+        <members>Account_Info</members>
         <name>FlexiPage</name>
     </types>
     <types>
@@ -18,9 +19,14 @@
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
         <members>AnimalTriggerHandler</members>
+        <members>AnimalTriggerTest</members>
         <members>ShelterHoursController</members>
         <members>ShelterMapController</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Account.PersonAccount</members>
+        <name>RecordType</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>

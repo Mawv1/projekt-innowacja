@@ -55,6 +55,26 @@
                 <identifier>RecordCurrent_Animal_Count_cField2</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Adopted_Animal_Count__c</fieldItem>
+                <identifier>RecordAdopted_Animal_Count_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Unadopted_Animal_Count__c</fieldItem>
+                <identifier>RecordUnadopted_Animal_Count_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-8e7451f5-63e9-4194-aebf-1590917b5fab</name>
         <type>Facet</type>
     </flexiPageRegions>
