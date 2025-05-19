@@ -25,6 +25,10 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>Account.PersonAccount</members>
+        <name>RecordType</name>
+    </types>
+    <types>
         <members>AdoptionTrigger</members>
         <members>AnimalTrigger</members>
         <name>ApexTrigger</name>
