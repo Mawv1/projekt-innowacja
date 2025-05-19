@@ -6,6 +6,7 @@
         <members>Adoptions</members>
         <members>Shelter</members>
         <members>Shelter_Opening_Hours</members>
+        <members>Account_Info</members>
         <name>FlexiPage</name>
     </types>
     <types>
