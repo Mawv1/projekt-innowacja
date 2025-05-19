@@ -15,7 +15,9 @@
                                 <span class="slds-text-color_error">Closed</span>
                             </template>
                             <template if:false={day.Closed__c}>
-                                <span>{day.openTime} – {day.closeTime}</span>
+                                <lightning-formatted-date-time value={day.Open__c} hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
+                                &nbsp;–&nbsp;
+                               <lightning-formatted-date-time value={day.Close__c} hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
                             </template>
                         </div>
                     </li>
