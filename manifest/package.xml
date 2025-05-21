@@ -22,7 +22,14 @@
         <members>AnimalTriggerTest</members>
         <members>ShelterHoursController</members>
         <members>ShelterMapController</members>
+        <members>MissingAnimalsService</members>
+        <members>AuthService</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>auth_http</members>
+        <members>missing_animals_http</members>
+        <name>RemoteSiteSetting</name>
     </types>
     <types>
         <members>Account.PersonAccount</members>
