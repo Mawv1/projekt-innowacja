@@ -22,7 +22,7 @@
         <members>AnimalTriggerTest</members>
         <members>ShelterHoursController</members>
         <members>ShelterMapController</members>
-        <members>MissingAnimalsService</members>
+        <members>MissingAnimalService</members>
         <members>AuthService</members>
         <name>ApexClass</name>
     </types>
