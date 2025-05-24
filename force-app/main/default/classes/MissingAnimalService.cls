@@ -2,6 +2,7 @@ public with sharing class MissingAnimalService {
     private static final String ENDPOINT = 'https://cw-inn--rest.sandbox.my.salesforce.com/services/apexrest/MissingAnimals';
     private static final String GET = 'GET';
     private static final String POST = 'POST';
+    private static final String PUT = 'PUT';
     
     public class AnimalWrapper {
         public String id;
@@ -144,6 +145,39 @@ public with sharing class MissingAnimalService {
 
         if (response.getStatusCode() != 201 && response.getStatusCode() != 200) {
             throw new CalloutException('Błąd przy tworzeniu zgłoszenia: ' + response.getStatus() + ' ' + response.getBody());
+        }
+    }
+
+    public static void updateAnimalFoundStatus(String animalId, Boolean found) {
+        if (String.isBlank(animalId)) {
+            throw new AuraHandledException('animalId nie może być pusty');
+        }
+
+        if (!animalId.startsWith('ANO-')) {
+            throw new AuraHandledException('Nieprawidłowy format animalId');
+        }
+
+        String token = AuthService.getAccessToken();
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(ENDPOINT);
+        request.setMethod('PUT');
+        request.setHeader('Authorization', 'Bearer ' + token);
+        request.setHeader('Content-Type', 'application/json');
+
+        Map<String, Object> payload = new Map<String, Object>{
+            'animalId' => animalId,
+            'found' => found
+        };
+
+        String jsonBody = JSON.serialize(payload);
+        request.setBody(jsonBody);
+
+        HttpResponse response = http.send(request);
+
+        if (response.getStatusCode() != 200 && response.getStatusCode() != 204) {
+            throw new CalloutException('Błąd przy aktualizacji statusu: ' + response.getStatus() + ' ' + response.getBody());
         }
     }
 }
