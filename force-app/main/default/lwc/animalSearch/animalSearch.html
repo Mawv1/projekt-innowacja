@@ -1,0 +1,58 @@
+<template>
+    <div class="filters">
+        <div class="filter-group">
+            <label for="shelter">Shelter</label>
+            <lightning-combobox
+                label="Shelter"
+                value={selectedShelter}
+                options={shelterOptions}
+                onchange={handleShelterChange}>
+            </lightning-combobox>
+        </div>
+        <div class="filter-group">
+            <label for="breed">Breed</label>
+            <lightning-combobox
+                label="Breed"
+                value={selectedBreed}
+                options={breedOptions}
+                onchange={handleBreedChange}>
+            </lightning-combobox>
+        </div>
+        <div class="filter-group">
+            <label for="age">Age</label>
+            <lightning-combobox
+                label="Age"
+                value={selectedAge}
+                options={ageOptions}
+                onchange={handleAgeChange}>
+            </lightning-combobox>
+        </div>
+        <div class="filter-group">
+            <label for="gender">Gender</label>
+            <lightning-combobox
+                label="Gender"
+                value={selectedGender}
+                options={genderOptions}
+                onchange={handleGenderChange}>
+            </lightning-combobox>
+        </div>
+    </div>
+
+    <div class="results">
+        <template if:true={filteredAnimals.length}>
+            <template for:each={filteredAnimals} for:item="animal">
+                <div key={animal.id} class="card">
+                    <img src={animal.image} alt={animal.name} />
+                    <div class="info">
+                        <h2>{animal.name}</h2>
+                        <p>{animal.breed} • {animal.age} • {animal.gender}</p>
+                        <p>{animal.shelterName}</p>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template if:false={filteredAnimals.length}>
+            <p>No animals found matching the selected filters.</p>
+        </template>
+    </div>
+</template>
