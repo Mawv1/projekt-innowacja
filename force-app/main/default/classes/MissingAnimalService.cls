@@ -2,7 +2,6 @@ public with sharing class MissingAnimalService {
     private static final String ENDPOINT = 'https://cw-inn--rest.sandbox.my.salesforce.com/services/apexrest/MissingAnimals';
     private static final String GET = 'GET';
     private static final String POST = 'POST';
-    private static final String PUT = 'PUT';
     
     public class AnimalWrapper {
         public String id;
@@ -89,95 +88,6 @@ public with sharing class MissingAnimalService {
             return animal;
         } else {
             throw new CalloutException('Failed to get data from ' + ENDPOINT + ' status:' + response.getStatus());
-        }
-    }
-
-    public class MissingAnimalWrapper {
-        public ReportWrapper report;
-        public AnimalCreateWrapper animal;
-    }
-
-    public class ReportWrapper {
-        public String address;
-        public Decimal disappearancePlaceLongitude;
-        public Decimal disappearancePlaceLatitude;
-        public String disappearanceDate;
-        public String description;
-    }
-
-    public class AnimalCreateWrapper {
-        public String name;
-        public String imageUrl;
-        public String breed;
-        public Integer age;
-        public String uniqueFeatures;
-        public String size;
-    }
-
-    public static void createMissingAnimal(MissingAnimalWrapper wrapper) {
-        if (wrapper == null || wrapper.report == null || wrapper.animal == null) {
-            throw new AuraHandledException('Brak wymaganych danych');
-        }
-
-        Boolean hasAddress = !String.isBlank(wrapper.report.address);
-        Boolean hasCoords = wrapper.report.disappearancePlaceLatitude != null && wrapper.report.disappearancePlaceLongitude != null;
-        if (!hasAddress && !hasCoords) {
-            throw new AuraHandledException('Wymagany jest adres lub współrzędne');
-        }
-
-        if (String.isBlank(wrapper.report.disappearanceDate) || String.isBlank(wrapper.report.description)) {
-            throw new AuraHandledException('Data zaginięcia i opis są wymagane');
-        }
-
-        String token = AuthService.getAccessToken();
-
-        Http http = new Http();
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint(ENDPOINT);
-        request.setMethod(POST);
-        request.setHeader('Authorization', 'Bearer ' + token);
-        request.setHeader('Content-Type', 'application/json');
-
-        String jsonBody = JSON.serialize(new Map<String, Object>{ 'missingAnimalWrapper' => wrapper });
-        request.setBody(jsonBody);
-
-        HttpResponse response = http.send(request);
-
-        if (response.getStatusCode() != 201 && response.getStatusCode() != 200) {
-            throw new CalloutException('Błąd przy tworzeniu zgłoszenia: ' + response.getStatus() + ' ' + response.getBody());
-        }
-    }
-
-    public static void updateAnimalFoundStatus(String animalId, Boolean found) {
-        if (String.isBlank(animalId)) {
-            throw new AuraHandledException('animalId nie może być pusty');
-        }
-
-        if (!animalId.startsWith('ANO-')) {
-            throw new AuraHandledException('Nieprawidłowy format animalId');
-        }
-
-        String token = AuthService.getAccessToken();
-
-        Http http = new Http();
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint(ENDPOINT);
-        request.setMethod('PUT');
-        request.setHeader('Authorization', 'Bearer ' + token);
-        request.setHeader('Content-Type', 'application/json');
-
-        Map<String, Object> payload = new Map<String, Object>{
-            'animalId' => animalId,
-            'found' => found
-        };
-
-        String jsonBody = JSON.serialize(payload);
-        request.setBody(jsonBody);
-
-        HttpResponse response = http.send(request);
-
-        if (response.getStatusCode() != 200 && response.getStatusCode() != 204) {
-            throw new CalloutException('Błąd przy aktualizacji statusu: ' + response.getStatus() + ' ' + response.getBody());
         }
     }
 }

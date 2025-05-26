@@ -57,6 +57,7 @@
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
         <members>Shelter__c-Shelter Layout</members>
+        <members>Adoption__c-Adoption Layout</members>
         <name>Layout</name>
     </types>
     <types>
