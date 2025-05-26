@@ -12,6 +12,7 @@
     <types>
         <members>shelterOpenHours</members>
         <members>shelterMap</members>
+        <members>animalSearch</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
@@ -24,6 +25,7 @@
         <members>ShelterMapController</members>
         <members>MissingAnimalService</members>
         <members>AuthService</members>
+        <members>AnimalSearchController</members>
         <name>ApexClass</name>
     </types>
     <types>
