@@ -7,6 +7,7 @@
         <members>Shelter</members>
         <members>Shelter_Opening_Hours</members>
         <members>Account_Info</members>
+        <members>Animal_Search</members>
         <name>FlexiPage</name>
     </types>
     <types>
