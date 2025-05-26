@@ -5,13 +5,13 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Name</fieldItem>
                 <identifier>RecordNameField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-c80e9ef8-2e1b-41e3-88fe-d48de333b1b0</name>
+        <name>Facet-c90db2b0-73e2-4f57-92b6-23c66a49f1ae</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -21,8 +21,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Status__c</fieldItem>
-                <identifier>RecordStatus_cField</identifier>
+                <fieldItem>Record.PersonEmail</fieldItem>
+                <identifier>RecordPersonEmailField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -31,8 +31,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Adoption_type__c</fieldItem>
-                <identifier>RecordAdoption_type_cField</identifier>
+                <fieldItem>Record.Phone</fieldItem>
+                <identifier>RecordPhoneField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -41,18 +41,21 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Amount__c</fieldItem>
-                <identifier>RecordAmount_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Adoption_type__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Virtual</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <fieldItem>Record.Food_Points__c</fieldItem>
+                <identifier>RecordFood_Points_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-d76aeccf-9eed-4257-8d37-e71b772f89c2</name>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Food_Gift__c</fieldItem>
+                <identifier>RecordFood_Gift_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-d3d1d177-781d-425a-8e28-bbdcdcf04367</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -64,11 +67,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>primaryField</name>
-                    <value>Facet-c80e9ef8-2e1b-41e3-88fe-d48de333b1b0</value>
+                    <value>Facet-c90db2b0-73e2-4f57-92b6-23c66a49f1ae</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>secondaryFields</name>
-                    <value>Facet-d76aeccf-9eed-4257-8d37-e71b772f89c2</value>
+                    <value>Facet-d3d1d177-781d-425a-8e28-bbdcdcf04367</value>
                 </componentInstanceProperties>
                 <componentName>record_flexipage:dynamicHighlights</componentName>
                 <identifier>record_flexipage_dynamicHighlights</identifier>
@@ -81,43 +84,26 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>createQuickActionName</name>
-                    <value>NewAccount</value>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Adoption__c.Adopter__c</value>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>titleFieldName</name>
+                    <name>showActionBar</name>
+                    <value>true</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Account.Edit_Adopter_Info</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>lookupFieldName</name>
-                    <value>Adoption__c.Animal__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>updateQuickActionName</name>
-                    <value>Animal__c.Edit_Animal_info</value>
-                </componentInstanceProperties>
-                <componentName>console:relatedRecord</componentName>
-                <identifier>console_relatedRecord2</identifier>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Adoptions</masterLabel>
-    <sobjectType>Adoption__c</sobjectType>
+    <masterLabel>Account Info</masterLabel>
+    <sobjectType>Account</sobjectType>
     <template>
         <name>flexipage:recordHomeSimpleViewTemplate</name>
         <properties>

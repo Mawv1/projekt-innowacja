@@ -5,11 +5,15 @@
         <members>Ai_Mals_UtilityBar</members>
         <members>Adoptions</members>
         <members>Shelter</members>
+        <members>Shelter_Opening_Hours</members>
+        <members>Account_Info</members>
+        <members>Animal_Search</members>
         <name>FlexiPage</name>
     </types>
     <types>
         <members>shelterOpenHours</members>
         <members>shelterMap</members>
+        <members>animalSearch</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
@@ -17,9 +21,22 @@
         <members>AdoptionTriggerTest</members>
         <members>AdoptionValidationTest</members>
         <members>AnimalTriggerHandler</members>
+        <members>AnimalTriggerTest</members>
         <members>ShelterHoursController</members>
         <members>ShelterMapController</members>
+        <members>MissingAnimalService</members>
+        <members>AuthService</members>
+        <members>AnimalSearchController</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>auth_http</members>
+        <members>missing_animals_http</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <types>
+        <members>Account.PersonAccount</members>
+        <name>RecordType</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>
@@ -40,6 +57,7 @@
         <members>Case-Case Layout</members>
         <members>Animal__c-Animal Layout</members>
         <members>Shelter__c-Shelter Layout</members>
+        <members>Adoption__c-Adoption Layout</members>
         <name>Layout</name>
     </types>
     <types>
