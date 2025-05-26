@@ -1,22 +1,19 @@
-trigger AnimalTrigger on Animal__c (after insert, after update, after delete, after undelete) {
+trigger AnimalTrigger on Animal__c (after insert, after update, after delete, after undelete, before delete) {
     
-    Set<Id> shelterIds = new Set<Id>();
-
-    if (Trigger.isInsert || Trigger.isUpdate || Trigger.isUndelete) {
-        for (Animal__c animal : Trigger.new) {
-            if (animal.Shelter__c != null) {
-                shelterIds.add(animal.Shelter__c);
+        switch on Trigger.operationType {
+            when BEFORE_DELETE {
+                AnimalTriggerHandler.updateAdoptedAnimalCounts(Trigger.old, Trigger.oldMap, Trigger.operationType);
+            }
+            when AFTER_DELETE {
+                AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);
+            }
+            when AFTER_UNDELETE {
+                AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);
+            }
+            when else {
+                AnimalTriggerHandler.updateAdoptedAnimalCounts(Trigger.new, Trigger.oldMap, Trigger.operationType);
+                AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);
             }
         }
-    }
-
-    if (Trigger.isUpdate || Trigger.isDelete) {
-        for (Animal__c animal : Trigger.old) {
-            if (animal.Shelter__c != null) {
-                shelterIds.add(animal.Shelter__c);
-            }
-        }
-    }
-
-    AnimalTriggerHandler.updateUnadoptedAnimalCounts(shelterIds);
+    
 }

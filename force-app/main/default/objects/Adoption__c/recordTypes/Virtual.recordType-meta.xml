@@ -6,12 +6,8 @@
     <picklistValues>
         <picklist>Adoption_type__c</picklist>
         <values>
-            <fullName>Real</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Virtual</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
     </picklistValues>
     <picklistValues>

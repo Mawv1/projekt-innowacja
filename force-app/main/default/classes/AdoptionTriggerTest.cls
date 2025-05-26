@@ -13,7 +13,9 @@ public class AdoptionTriggerTest {
     }
 
     private static Animal__c createTestAnimal() {
-        Shelter__c shelter = new Shelter__c(Name = 'Test Shelter');
+        Shelter__c shelter = new Shelter__c(
+            Name = 'Test Shelter'
+        );
         insert shelter;
 
         Animal__c animal = new Animal__c(Name = 'Test Animal', Shelter__c = shelter.Id);
