@@ -9,11 +9,7 @@ export default class ReadOnlyOpeningHours extends LightningElement {
     @wire(getOpeningHours, { shelterId: '$recordId' })
     wiredHours({ error, data }) {
         if (data) {
-            this.openingHours = data.map(day => {
-                return {
-                    ...day,
-                };
-            });
+            this.openingHours = data.map(day => ({ ...day }));
             this.error = undefined;
         } else if (error) {
             this.error = error;
