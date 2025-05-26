@@ -1,0 +1,36 @@
+.card-image-container {
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-info-panel {
+  background-color: whitesmoke;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.custom-combobox-label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.animal-name {
+  font-size: 1.5rem;
+  color: #5B2D04;
+  font-weight: 800;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.custom-card {
+  min-width: 350px;
+}
