@@ -7,11 +7,13 @@
         <members>Shelter</members>
         <members>Shelter_Opening_Hours</members>
         <members>Account_Info</members>
+        <members>Animal_Search</members>
         <name>FlexiPage</name>
     </types>
     <types>
         <members>shelterOpenHours</members>
         <members>shelterMap</members>
+        <members>animalSearch</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
@@ -24,6 +26,7 @@
         <members>ShelterMapController</members>
         <members>MissingAnimalService</members>
         <members>AuthService</members>
+        <members>AnimalSearchController</members>
         <name>ApexClass</name>
     </types>
     <types>
