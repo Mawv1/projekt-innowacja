@@ -1,11 +1,12 @@
 import { LightningElement, track, wire } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 import getAnimals from '@salesforce/apex/AnimalSearchController.getAnimals';
 import getShelterOptions from '@salesforce/apex/AnimalSearchController.getShelterOptions';
 import getBreedOptions from '@salesforce/apex/AnimalSearchController.getBreedOptions';
 import getAgeOptions from '@salesforce/apex/AnimalSearchController.getAgeOptions';
 import getGenderOptions from '@salesforce/apex/AnimalSearchController.getGenderOptions';
 
-export default class AnimalSearch extends LightningElement {
+export default class AnimalSearch extends NavigationMixin(LightningElement) {
     @track shelterOptions = [{ label: 'Any', value: '' }];
     @track breedOptions = [{ label: 'Any', value: '' }];
     @track ageOptions = [{ label: 'Any', value: '' }];
@@ -97,5 +98,17 @@ export default class AnimalSearch extends LightningElement {
             this.genderOptions = [{ label: 'Any', value: '' }, ...data.map(gender => ({ label: gender, value: gender }))];
             console.log(this.genderOptions);
         }
+    }
+
+    navigateToAnimalDetail(event) {
+        const animalId = event.currentTarget.dataset.id;
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: animalId,
+                objectApiName: 'Animal__c',
+                actionName: 'view'
+            }
+        });
     }
 }

@@ -15,6 +15,7 @@
 .card-info-panel {
   background-color: whitesmoke;
   border-radius: 0 0 0.5rem 0.5rem;
+  cursor: pointer;
 }
 
 .custom-combobox-label {
@@ -27,8 +28,12 @@
 .animal-name {
   font-size: 1.5rem;
   color: #5B2D04;
-  font-weight: 800;
-  margin: 0.5rem 0 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  gap:0.5rem;
 }
 
 .custom-card {

@@ -6,6 +6,7 @@
       <div class="slds-size_1-of-1 slds-text-heading_large  slds-m-bottom_small slds-text-align_center">
          FILTERS
       </div>
+
       <!-- Filters Section -->
       <div class="slds-size_1-of-1 slds-box slds-theme_default slds-m-bottom_medium">
         <div class="slds-grid slds-wrap slds-gutters">
@@ -66,11 +67,12 @@
                 <div class="card-image-container">
                   <img src={animal.image} alt={animal.name} class="card-image" />
                 </div>
-                <div class="card-info-panel slds-p-around_medium slds-text-align_center">
-                  <h2 class="animal-name">{animal.name}</h2>
-                  <p class="slds-text-body_regular">{animal.breed}</p>
-                  <p class="slds-text-body_small slds-m-bottom_small">{animal.gender} ● {animal.age}</p>
-                  <p class="slds-text-title_caps slds-text-color_weak">{animal.shelterName}</p>
+                <div class="card-info-panel slds-p-around_small slds-text-align_center" data-id={animal.id} onclick={navigateToAnimalDetail}>
+                    <h2 class="animal-name">{animal.name}</h2>                  
+                    <p class="slds-text-body_regular">{animal.breed}</p>
+                    <p class="slds-text-body_regular">{animal.gender}</p>
+                    <p class="slds-text-body_regular slds-m-bottom_small">{animal.age} years old</p>
+                    <p class="slds-text-title_caps slds-text-color_weak">{animal.shelterName}</p>
                 </div>
               </div>
             </div>
