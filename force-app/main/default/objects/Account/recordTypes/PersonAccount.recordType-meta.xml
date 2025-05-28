@@ -2,7 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PersonAccount</fullName>
     <active>true</active>
-    <compactLayoutAssignment>Account_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <description>Dummy Person Account</description>
     <label>Person Account</label>
     <picklistValues>

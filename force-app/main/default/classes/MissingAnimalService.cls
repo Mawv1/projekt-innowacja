@@ -29,7 +29,7 @@ public with sharing class MissingAnimalService {
             dayDelta = 7;
         }
         if (dayDelta < 0) {
-            throw new AuraHandledException('Day delta cannot be negative');
+            throw new InvalidParameterException('Day delta cannot be negative');
         }
 
         Date targetDate = Date.today().addDays(-dayDelta);
@@ -38,7 +38,7 @@ public with sharing class MissingAnimalService {
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(ENDPOINT);
+        request.setEndpoint(ENDPOINT + '?dayDelta=' + dayDelta);
         request.setMethod(GET);
         request.setHeader('Authorization', 'Bearer ' + token);
         request.setHeader('Content-Type', 'application/json');
@@ -46,15 +46,7 @@ public with sharing class MissingAnimalService {
         HttpResponse response = http.send(request);
 
         if (response.getStatusCode() == 200) {
-            List<AnimalWrapper> unsortedAnimalsList = (List<AnimalWrapper>) JSON.deserialize(response.getBody(), List<AnimalWrapper>.class);
-
-            List<AnimalWrapper> animalsList = new List<AnimalWrapper>();
-
-            for (AnimalWrapper animalWrapper : unsortedAnimalsList) {
-                if (animalWrapper.getMissingDate() >= targetDate) {
-                    animalsList.add(animalWrapper);
-                }
-            }
+            List<AnimalWrapper> animalsList = (List<AnimalWrapper>) JSON.deserialize(response.getBody(), List<AnimalWrapper>.class);
 
             return animalsList;
         } else {
@@ -64,11 +56,11 @@ public with sharing class MissingAnimalService {
 
     public static AnimalDetailWrapper getMissingAnimalDetails(String id) {
         if (id == null) {
-            throw new AuraHandledException('Id cannot be null');
+            throw new InvalidParameterException('Id cannot be null');
         }
 
         if (!id.substring(0,4).equals('ANO-')) {
-            throw new AuraHandledException('Wrong Id format');
+            throw new InvalidParameterException('Wrong Id format');
         }
 
         String token = AuthService.getAccessToken();

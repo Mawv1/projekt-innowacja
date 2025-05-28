@@ -50,6 +50,7 @@
         <members>Adoption__c</members>
         <members>Shelter__c</members>
         <members>Shelter_Opening_Hour__c</members>
+        <members>Auth_Settings__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -65,7 +66,7 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>Account.Edit_Adopter_info</members>
+        <members>Account.Edit_Adopter_Info</members>
         <members>Animal__c.Edit_Animal_info</members>
         <name>QuickAction</name>
     </types>
