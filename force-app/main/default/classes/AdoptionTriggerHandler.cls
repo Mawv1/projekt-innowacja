@@ -15,17 +15,20 @@ public with sharing class AdoptionTriggerHandler {
              
             if (adoption.Adoption_type__c == ADOPTION_TYPE_REAL) {
                 if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) 
-                    && adoption.Status__c == STATUS_APPROVED) {
+                    && adoption.Status__c == STATUS_APPROVED && oldMap.get(adoption.Id).Status__c != STATUS_APPROVED) {
                     counter += REAL_ADOPTION_POINTS;
                 } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && adoption.Status__c == STATUS_APPROVED) ||
-                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c && adoption.Status__c == STATUS_IN_PROGRESS)) {
+                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c 
+                    && adoption.Status__c == STATUS_IN_PROGRESS)) {
                     counter -= REAL_ADOPTION_POINTS;
                 }
             } else if (adoption.Adoption_type__c == ADOPTION_TYPE_VIRTUAL) {
-                if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) && adoption.Status__c == STATUS_APPROVED) {
+                if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) 
+                    && adoption.Status__c == STATUS_APPROVED && oldMap.get(adoption.Id).Status__c != STATUS_APPROVED) {
                     counter += VIRTUAL_ADOPTION_POINTS;
                 } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && adoption.Status__c == STATUS_APPROVED) ||
-                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c && adoption.Status__c == STATUS_IN_PROGRESS)) {
+                    (operationType == System.TriggerOperation.AFTER_UPDATE && adoption.Status__c != oldMap.get(adoption.Id).Status__c 
+                    && adoption.Status__c == STATUS_IN_PROGRESS)) {
                     counter -= VIRTUAL_ADOPTION_POINTS;
                 }
             } else {
@@ -60,6 +63,7 @@ public with sharing class AdoptionTriggerHandler {
             Id animal = adoption.Animal__c;
 
             if (operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) {
+                
                 if (adoption.Status__c == STATUS_APPROVED) {
                     animalStatusMap.put(animal, AnimalTriggerHandler.ANIMAL_STATUS_ADOPTED);
                 } else {

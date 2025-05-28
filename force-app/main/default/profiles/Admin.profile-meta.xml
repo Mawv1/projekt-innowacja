@@ -247,8 +247,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Animal__c.Is_Adopted__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Animal__c.Likes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Animal__c.Number_Of_Adoptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

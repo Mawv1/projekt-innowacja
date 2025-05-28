@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Animal_Not_Adopted</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  ISNEW(),
+  Animal__r.Is_Adopted__c = TRUE
+)</errorConditionFormula>
+    <errorDisplayField>Animal__c</errorDisplayField>
+    <errorMessage>Animal already adopted or in progress.</errorMessage>
+</ValidationRule>

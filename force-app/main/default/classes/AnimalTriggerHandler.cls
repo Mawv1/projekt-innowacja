@@ -58,7 +58,7 @@ public with sharing class AnimalTriggerHandler {
             Integer counter = 0;
 
             if ((operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE) 
-                && animal.Status__c == ANIMAL_STATUS_ADOPTED) {
+                && animal.Status__c == ANIMAL_STATUS_ADOPTED && oldMap.get(animal.Id).Status__c != ANIMAL_STATUS_ADOPTED) {
                 counter++;
             } else if ((operationType == System.TriggerOperation.BEFORE_DELETE && animal.Status__c == ANIMAL_STATUS_ADOPTED)
                 || (operationType == System.TriggerOperation.AFTER_UPDATE && animal.Status__c != oldMap.get(animal.Id).Status__c && oldMap.get(animal.Id).Status__c == ANIMAL_STATUS_ADOPTED)) {

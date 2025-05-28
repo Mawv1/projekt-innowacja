@@ -9,13 +9,9 @@ public with sharing class AuthService {
     }
 
     private static final String ENDPOINT = 'https://test.salesforce.com/services/oauth2/token';
-    private static final String CLIENT_ID = '3MVG9xqN3LZmHU7n7G0NHUYpNLMsh55X1HNRUcsBJ5Dtevv.S1jOSgyx3l3DQXqRc1md0qpR_l7ewk1oK4Oa9';
-    private static final String SECRET = 'F5CF486958B3E03C7FEF2A26DDB959301FCD7CDF34F3736F51A409D5B378402F';
-    private static final String USERNAME = 'restuser@innowacja.rest.rest';
-    private static final String PASSWORD = 'testInn123!';
-    private static final String SECURITY_TOKEN = '7Z6ATDMvnnmfXwEpVa9PqgAG';
-
+ 
     public static String getAccessToken() {
+        Auth_Settings__c authSettings = [SELECT Client_Id__c, Secret__c, Username__c, Password__c, Security_Token__c FROM Auth_Settings__c WHERE Name = 'AuthService'];
         Http http = new Http();
         HttpRequest request = new HttpRequest();
 
@@ -25,10 +21,10 @@ public with sharing class AuthService {
 
         String body = 
             'grant_type=password' +
-            '&client_id=' + EncodingUtil.urlEncode(CLIENT_ID, 'UTF-8') +
-            '&client_secret=' + EncodingUtil.urlEncode(SECRET, 'UTF-8') +
-            '&username=' + EncodingUtil.urlEncode(USERNAME, 'UTF-8') +
-            '&password=' + EncodingUtil.urlEncode(PASSWORD + SECURITY_TOKEN, 'UTF-8');
+            '&client_id=' + EncodingUtil.urlEncode(authSettings.Client_Id__c, 'UTF-8') +
+            '&client_secret=' + EncodingUtil.urlEncode(authSettings.Secret__c, 'UTF-8') +
+            '&username=' + EncodingUtil.urlEncode(authSettings.Username__c, 'UTF-8') +
+            '&password=' + EncodingUtil.urlEncode(authSettings.Password__c + authSettings.Security_Token__c, 'UTF-8');
 
         request.setBody(body);
         HttpResponse response = http.send(request);

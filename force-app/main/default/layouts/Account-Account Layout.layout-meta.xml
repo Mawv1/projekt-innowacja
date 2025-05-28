@@ -13,13 +13,9 @@
     <excludeButtons>CreateIncident</excludeButtons>
     <excludeButtons>CreatePartnerChannelQuickAction</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Entitlements</excludeButtons>
     <excludeButtons>EvalAccForResearchStudy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PreviewInvoices</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -143,6 +139,8 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Animal__c.NAME</fields>
+        <fields>Animal__c.Status__c</fields>
         <relatedList>Adoption__c.Adopter__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
