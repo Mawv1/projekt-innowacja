@@ -207,9 +207,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Adoption__c.Adoption_type__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -523,6 +523,17 @@
         <recordType>Account.PersonAccount</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Adoption__c-Real Adoption Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Adoption__c-Real Adoption Layout</layout>
+        <recordType>Adoption__c.Real</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Adoption__c-Virtual Adoption Layout</layout>
+        <recordType>Adoption__c.Virtual</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Animal__c-Animal Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -599,19 +610,20 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>true</default>
+        <default>false</default>
         <recordType>Account.PersonAccount</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
+        <recordType>Adoption__c.Real</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Adoption__c.Real</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>Adoption__c.Virtual</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -643,7 +655,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Animal_Search</tab>
-        <visibility>DefaultOn</visibility>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Animal__c</tab>
