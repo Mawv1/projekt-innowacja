@@ -3,19 +3,36 @@ public with sharing class AnimalTriggerHandler {
     public static final String ANIMAL_STATUS_RESERVED = 'Reserved';
     public static final String ANIMAL_STATUS_AVAILABLE = 'Available';
 
-
-    public static void updateUnadoptedAnimalCounts(List<Animal__c> newAnimalList, List<Animal__c> oldAnimalList, System.TriggerOperation operationType) {
+    public static void updateUnadoptedAnimalCounts(
+        List<Animal__c> newAnimalList,
+        List<Animal__c> oldAnimalList,
+        Map<Id, Animal__c> oldMap,
+        System.TriggerOperation operationType
+    ) {
         Set<Id> shelterIds = new Set<Id>();
 
-        if (operationType == System.TriggerOperation.AFTER_INSERT || operationType == System.TriggerOperation.AFTER_UPDATE || operationType == System.TriggerOperation.AFTER_UNDELETE) {
+        if (operationType == System.TriggerOperation.AFTER_INSERT ||
+            operationType == System.TriggerOperation.AFTER_UPDATE ||
+            operationType == System.TriggerOperation.AFTER_UNDELETE) {
+
             for (Animal__c animal : newAnimalList) {
                 if (animal.Shelter__c != null) {
                     shelterIds.add(animal.Shelter__c);
                 }
+
+                if (operationType == System.TriggerOperation.AFTER_UPDATE &&
+                    oldMap != null &&
+                    oldMap.containsKey(animal.Id) &&
+                    animal.Shelter__c != oldMap.get(animal.Id).Shelter__c) {
+
+                    shelterIds.add(oldMap.get(animal.Id).Shelter__c);
+                }
+
+                // Możesz dodać tu logikę dla zmiany statusu
             }
         }
 
-        if (operationType == System.TriggerOperation.AFTER_UPDATE || operationType == System.TriggerOperation.AFTER_DELETE) {
+        if (operationType == System.TriggerOperation.AFTER_DELETE) {
             for (Animal__c animal : oldAnimalList) {
                 if (animal.Shelter__c != null) {
                     shelterIds.add(animal.Shelter__c);
@@ -29,7 +46,7 @@ public with sharing class AnimalTriggerHandler {
         for (AggregateResult ar : [
             SELECT Shelter__c shelterId, COUNT(Id) unadoptedCount
             FROM Animal__c
-            WHERE Shelter__c IN :shelterIds AND (Status__c = 'Available' OR Status__c = null)
+            WHERE Shelter__c IN :shelterIds AND (Status__c = :ANIMAL_STATUS_AVAILABLE OR Status__c = null)
             GROUP BY Shelter__c
         ]) {
             countMap.put((Id) ar.get('shelterId'), (Integer) ar.get('unadoptedCount'));
@@ -40,7 +57,7 @@ public with sharing class AnimalTriggerHandler {
             Integer count = countMap.get(shelterId);
             Shelter__c shelter = new Shelter__c(
                 Id = shelterId,
-                Unadopted_Animal_Count__c = (count != null ? count : 0)
+                Unadopted_Animal_Count__c = count ?? 0
             );
             sheltersToUpdate.add(shelter);
         }

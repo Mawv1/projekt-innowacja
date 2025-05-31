@@ -1,5 +1,6 @@
 @IsTest
 private class AdoptionValidationTest {
+
     private static String getAnyValidStatusValue() {
         Schema.DescribeFieldResult dr = Adoption__c.Status__c.getDescribe();
         for (Schema.PicklistEntry pe : dr.getPicklistValues()) {
@@ -10,30 +11,46 @@ private class AdoptionValidationTest {
         return null;
     }
 
-    private static Adoption__c createValidAdoptionRecord(Integer amount) {
-        Account adopterAcct = new Account(Name='Test Adopter Co.');
-        insert adopterAcct;
-        
-        Shelter__c shelter = new Shelter__c(Name='Main Shelter');
+    private static Adoption__c createValidAdoptionRecord(Decimal amount) {
+        // Tworzymy konto Adopter
+        Account adopter = new Account(Name = 'Test Adopter');
+        insert adopter;
+
+        Shelter__c shelter = new Shelter__c(
+            // Name = 'Test Shelter',
+            // Street__c = '123 Main St',
+            // Adress__City__s = 'Test City',
+            // Adress__State__s = 'Test State',
+            // Adress__PostalCode__s = '12-345',
+            // Adress__Country__s = 'Poland',
+            // Email__c = 'test@shelter.com',
+            // Phone__c = '123456789',
+            // Capacity__c = 100
+        );
         insert shelter;
-        
+
+        // Tworzymy zwierzę przypisane do schroniska
         Animal__c animal = new Animal__c(
-            Name       = 'Test Animal',
+            Name = 'Test Animal',
+            Sex__c = 'Male',
             Shelter__c = shelter.Id
         );
         insert animal;
-        
+
+        // Pobieramy aktywną wartość statusu
         String statusVal = getAnyValidStatusValue();
         System.assertNotEquals(null, statusVal, 'Brak aktywnych wartości Status__c');
 
-        Adoption__c rec = new Adoption__c(
-            Name       = 'Test Adoption',
-            Adopter__c = adopterAcct.Id,
-            Animal__c  = animal.Id,
-            Status__c  = statusVal,
-            Amount__c  = amount
+        // Tworzymy rekord adopcji
+        Adoption__c adoption = new Adoption__c(
+            Name = 'Test Adoption',
+            Adopter__c = adopter.Id,
+            Animal__c = animal.Id,
+            Status__c = statusVal,
+            Amount__c = amount
         );
-        return rec;
+
+        return adoption;
     }
 
     @IsTest static void testAmountTooLow() {

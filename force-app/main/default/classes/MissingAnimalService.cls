@@ -148,9 +148,17 @@ public with sharing class MissingAnimalService {
         }
     }
 
+    public class UpdateAnimalFoundWrapper {
+        public String animalId;
+        public Boolean found;
+    }
+
     public static void updateAnimalFoundStatus(String animalId, Boolean found) {
         if (String.isBlank(animalId)) {
             throw new AuraHandledException('animalId nie może być pusty');
+        }
+        if (found == null) {
+            throw new AuraHandledException('found nie może być pusty');
         }
 
         if (!animalId.startsWith('ANO-')) {
@@ -166,10 +174,9 @@ public with sharing class MissingAnimalService {
         request.setHeader('Authorization', 'Bearer ' + token);
         request.setHeader('Content-Type', 'application/json');
 
-        Map<String, Object> payload = new Map<String, Object>{
-            'animalId' => animalId,
-            'found' => found
-        };
+        UpdateAnimalFoundWrapper payload = new UpdateAnimalFoundWrapper();
+        payload.animalId = animalId;
+        payload.found = found;
 
         String jsonBody = JSON.serialize(payload);
         request.setBody(jsonBody);

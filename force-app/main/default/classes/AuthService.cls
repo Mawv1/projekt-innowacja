@@ -14,8 +14,17 @@ public with sharing class AuthService {
     private static final String USERNAME = 'restuser@innowacja.rest.rest';
     private static final String PASSWORD = 'testInn123!';
     private static final String SECURITY_TOKEN = '7Z6ATDMvnnmfXwEpVa9PqgAG';
+    private static String MOCK_ACCESS_TOKEN = null;
+
+    public static void setMockAccessToken(String accessToken) {
+        MOCK_ACCESS_TOKEN = accessToken;
+    }
 
     public static String getAccessToken() {
+        if (MOCK_ACCESS_TOKEN != null) {
+            return MOCK_ACCESS_TOKEN;
+        }
+
         Http http = new Http();
         HttpRequest request = new HttpRequest();
 
