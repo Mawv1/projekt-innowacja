@@ -9,9 +9,24 @@ public with sharing class AuthService {
     }
 
     private static final String ENDPOINT = 'https://test.salesforce.com/services/oauth2/token';
- 
+
+    private static String MOCK_ACCESS_TOKEN;
+
+    public static void setMockAccessToken(String token) {
+        MOCK_ACCESS_TOKEN = token;
+    }
+
     public static String getAccessToken() {
-        Auth_Settings__c authSettings = [SELECT Client_Id__c, Secret__c, Username__c, Password__c, Security_Token__c FROM Auth_Settings__c WHERE Name = 'AuthService'];
+        if (MOCK_ACCESS_TOKEN != null) {
+            return MOCK_ACCESS_TOKEN;
+        }
+
+        Auth_Settings__c authSettings = [
+            SELECT Client_Id__c, Secret__c, Username__c, Password__c, Security_Token__c
+            FROM Auth_Settings__c
+            WHERE Name = 'AuthService'
+        ];
+
         Http http = new Http();
         HttpRequest request = new HttpRequest();
 
