@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Account_Default</fullName>
+    <fullName>Default_Account</fullName>
     <active>true</active>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <label>Account Default</label>
+    <description>Record type for Person Account needs</description>
+    <label>Default Account</label>
     <picklistValues>
         <picklist>AccountSource</picklist>
         <values>
@@ -48,17 +48,6 @@
         </values>
         <values>
             <fullName>Word of mouth</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Active__c</picklist>
-        <values>
-            <fullName>No</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

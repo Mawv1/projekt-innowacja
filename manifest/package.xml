@@ -27,16 +27,14 @@
         <members>MissingAnimalService</members>
         <members>AuthService</members>
         <members>AnimalSearchController</members>
+        <members>InvalidParameterException</members>
+        <members>AdoptionUtils</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>auth_http</members>
         <members>missing_animals_http</members>
         <name>RemoteSiteSetting</name>
-    </types>
-    <types>
-        <members>Account.PersonAccount</members>
-        <name>RecordType</name>
     </types>
     <types>
         <members>AdoptionTrigger</members>
@@ -51,6 +49,7 @@
         <members>Shelter__c</members>
         <members>Shelter_Opening_Hour__c</members>
         <members>Auth_Settings__c</members>
+        <members>Ai_Mals__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -60,6 +59,7 @@
         <members>Shelter__c-Shelter Layout</members>
         <members>Adoption__c-Real Adoption Layout</members>
         <members>Adoption__c-Virtual Adoption Layout</members>
+        <members>PersonAccount-Person Account Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -67,7 +67,7 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>Account.Edit_Adopter_Info</members>
+        <members>Account.Edit_Adopter_info</members>
         <members>Animal__c.Edit_Animal_info</members>
         <name>QuickAction</name>
     </types>

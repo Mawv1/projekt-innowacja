@@ -5,8 +5,8 @@
     <label>Adopter</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Adoptions</relationshipLabel>
-    <relationshipName>Adopters</relationshipName>
-    <relationshipOrder>0</relationshipOrder>
+    <relationshipName>Adoptions</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
     <type>MasterDetail</type>

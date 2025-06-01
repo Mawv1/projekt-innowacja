@@ -6,7 +6,7 @@
     <referenceTo>Animal__c</referenceTo>
     <relationshipLabel>Adoptions</relationshipLabel>
     <relationshipName>Adoptions</relationshipName>
-    <relationshipOrder>1</relationshipOrder>
+    <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
     <type>MasterDetail</type>
