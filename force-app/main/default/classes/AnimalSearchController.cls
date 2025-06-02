@@ -1,76 +1,66 @@
 public with sharing class AnimalSearchController {
+    private static final Integer PAGE_SIZE = 10;
 
     @AuraEnabled(cacheable=true)
-    public static List<Animal__c> getAnimals(String shelter, String breed, String age, String gender) {
-        String query = 'SELECT Id, Name, Breed__c, Age__c, Shelter__r.Name, Shelter__c, Sex__c, Photo_URL__c FROM Animal__c WHERE ';
-        List<String> conditions = new List<String>();
+    public static List<Animal__c> getAnimals(
+        String shelter,
+        String breed,
+        Integer age,
+        String gender,
+        Integer offset
+    ) {
+        if (offset == null) {
+            offset = 0;
+        }
 
+        List<String> conditions = new List<String>();
         if (String.isNotBlank(shelter)) {
             conditions.add('Shelter__r.Name = :shelter');
         }
         if (String.isNotBlank(breed)) {
-            conditions.add('Breed__c = :breed');
+            String likeBreed = '%' + breed + '%';
+            conditions.add('Breed__c LIKE :likeBreed');
         }
-        if (String.isNotBlank(age)) {
-            Integer ageValue;
-            try {
-                ageValue = Integer.valueOf(age);
-            } catch (Exception e) {
-                ageValue = null;
-            }
-            conditions.add('Age__c = :ageValue');
+        if (age != null) {
+            conditions.add('Age__c = :age');
         }
         if (String.isNotBlank(gender)) {
             conditions.add('Sex__c = :gender');
         }
 
-        if (conditions.isEmpty()) {
-            query = query.removeEnd(' WHERE ') + ' LIMIT 50';
-        } else {
-            query += String.join(conditions, ' AND ');
+        String baseQuery = 
+            'SELECT Id, Name, Breed__c, Age__c, Photo_URL__c, Sex__c, Shelter__r.Name ' +
+            'FROM Animal__c';
+
+        if (!conditions.isEmpty()) {
+            baseQuery += ' WHERE ' + String.join(conditions, ' AND ');
         }
 
-        return Database.query(query);
+        baseQuery += ' LIMIT ' + PAGE_SIZE;
+        baseQuery += ' OFFSET ' + offset;
+
+        return Database.query(baseQuery);
     }
 
     @AuraEnabled(cacheable=true)
     public static List<String> getShelterOptions() {
-        Set<String> shelters = new Set<String>();
-        for (Animal__c animal : [SELECT Shelter__r.Name FROM Animal__c WHERE Shelter__c != null]) {
-            if (animal.Shelter__r != null) {
-                shelters.add(animal.Shelter__r.Name);
-            }
+        List<String> shelterNames = new List<String>();
+        for (Shelter__c shelter : [SELECT Name FROM Shelter__c]) {
+            shelterNames.add(shelter.Name);
         }
-        return new List<String>(shelters);
-    }
-
-    @AuraEnabled(cacheable=true)
-    public static List<String> getBreedOptions() {
-        Set<String> breeds = new Set<String>();
-        for (Animal__c animal : [SELECT Breed__c FROM Animal__c WHERE Breed__c != null]) {
-            breeds.add(animal.Breed__c);
-        }
-        return new List<String>(breeds);
-    }
-
-    @AuraEnabled(cacheable=true)
-    public static List<Integer> getAgeOptions() {
-        List<Integer> ages = new List<Integer>();
-        for (Animal__c animal : [SELECT Age__c FROM Animal__c WHERE Age__c != null ORDER BY Age__c]) {
-            Integer ageVal = animal.Age__c != null ? animal.Age__c.intValue() : null;
-            if (ageVal != null && !ages.contains(ageVal)) {
-                ages.add(ageVal);
-            }
-        }
-        return ages;
+        return shelterNames;
     }
 
     @AuraEnabled(cacheable=true)
     public static List<String> getGenderOptions() {
-        Set<String> genders = new Set<String>();
-        for (Animal__c animal : [SELECT Sex__c FROM Animal__c WHERE Sex__c != null]) {
-            genders.add(animal.Sex__c);
+        List<String> genderOptions = new List<String>();
+        Schema.DescribeFieldResult fieldResult = Animal__c.Sex__c.getDescribe();
+
+        for (Schema.PicklistEntry entry : fieldResult.getPicklistValues()) {
+            if (!entry.isActive()) continue;
+            genderOptions.add(entry.getLabel());
         }
-        return new List<String>(genders);
+
+        return genderOptions;
     }
 }
