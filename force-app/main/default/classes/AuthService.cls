@@ -24,7 +24,7 @@ public with sharing class AuthService {
         Auth_Settings__c authSettings = [
             SELECT Client_Id__c, Secret__c, Username__c, Password__c, Security_Token__c
             FROM Auth_Settings__c
-            WHERE Name = 'AuthService'
+            LIMIT 1
         ];
 
         Http http = new Http();
