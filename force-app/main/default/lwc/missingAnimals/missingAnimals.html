@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Missing Animals">
+        <div class="slds-p-around_medium">
+            <lightning-input type="number" label="Day Delta" value={dayDelta} onchange={handleDeltaChange} min="0"></lightning-input>
+            <lightning-button label="Fetch Animals" onclick={fetchAnimals} class="slds-m-top_small"></lightning-button>
+        </div>
+
+        <!-- Formularz dodawania nowego zwierzęcia -->
+        <lightning-card title="Add Missing Animal" class="slds-m-top_medium slds-p-around_medium">
+            <lightning-input label="Name" value={newAnimalName} onchange={handleNewAnimalNameChange}></lightning-input>
+            <lightning-input label="Address" value={newReportAddress} onchange={handleNewReportAddressChange}></lightning-input>
+            <lightning-input type="date" label="Disappearance Date" value={newDisappearanceDate} onchange={handleNewDisappearanceDateChange}></lightning-input>
+            <lightning-textarea label="Description" value={newReportDescription} onchange={handleNewReportDescriptionChange}></lightning-textarea>
+            <lightning-input label="Breed" value={newAnimalBreed} onchange={handleNewAnimalBreedChange}></lightning-input>
+            <lightning-input type="number" label="Age" value={newAnimalAge} onchange={handleNewAnimalAgeChange}></lightning-input>
+            <lightning-input label="Unique Features" value={newAnimalUniqueFeatures} onchange={handleNewAnimalUniqueFeaturesChange}></lightning-input>
+            <lightning-input label="Size" value={newAnimalSize} onchange={handleNewAnimalSizeChange}></lightning-input>
+            <lightning-input label="Image URL" value={newAnimalImageUrl} onchange={handleNewAnimalImageUrlChange}></lightning-input>
+            <lightning-button label="Add Animal" onclick={handleAddAnimal} class="slds-m-top_small"></lightning-button>
+        </lightning-card>
+
+        <template if:true={animals.length}>
+            <div class="slds-grid slds-wrap slds-p-around_medium">
+                <template for:each={animals} for:item="animal">
+                    <div key={animal.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_small">
+                        <lightning-card title={animal.name} icon-name="standard:animal_and_nature">
+                            <div class="slds-p-around_small">
+                                <p><strong>Missing Date: </strong><lightning-formatted-date-time value={animal.missingDate} year="numeric"
+        month="2-digit"
+        day="2-digit"
+        hour="2-digit"
+        minute="2-digit"></lightning-formatted-date-time></p>
+                                
+                                <template if:true={animal.imageUrl}>
+                                    <img src={animal.imageUrl} alt={animal.name} class="animal-image" />
+                                </template>
+                                <lightning-input type="checkbox" label="Found" checked={animal.found} data-id={animal.id} onchange={handleFoundChange}></lightning-input>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:false={animals.length}>
+            <p class="slds-p-around_medium">No animals found for the specified period.</p>
+        </template>
+    </lightning-card>
+</template>
