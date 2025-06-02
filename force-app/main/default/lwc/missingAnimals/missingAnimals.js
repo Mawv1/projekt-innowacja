@@ -5,8 +5,9 @@ import createMissingAnimal from '@salesforce/apex/MissingAnimalService.createMis
 import updateAnimalFoundStatus from '@salesforce/apex/MissingAnimalService.updateAnimalFoundStatus';
 
 export default class MissingAnimals extends LightningElement {
-    @track dayDelta = 7;
+    @track dayDelta = 50;
     @track animals = [];
+    @track isLoading = false;
 
     // Formularz - zmienne do trzymania wartości
     newAnimalName = '';
@@ -25,6 +26,7 @@ export default class MissingAnimals extends LightningElement {
 
     async fetchAnimals() {
         try {
+            this.isLoading = true;
             const list = await getMissingAnimals({ dayDelta: this.dayDelta });
             const detailedPromises = list.map(item => {
                 if (!item.id) {
@@ -59,35 +61,39 @@ export default class MissingAnimals extends LightningElement {
             this.animals = await Promise.all(detailedPromises);
         } catch (error) {
             console.error('Error fetching animals list:', error);
+        } finally {
+            this.isLoading = false;
         }
     }
 
     async handleAddAnimal() {
+        this.isLoading = true;
         if (!this.newAnimalName || !this.newReportAddress || 
             !this.newDisappearanceDate || !this.newReportDescription) {
             console.error('Missing required fields');
             return;
         }
         
-        const formattedDate = new Date(this.newDisappearanceDate).toISOString();
+        const formattedDate = new Date(this.newDisappearanceDate).toISOString().split('T')[0];
+        console.log('Formatted disappearance date:', formattedDate);
         
         const wrapper ={
-                report: {
-                    "address": "ul. Kwiatowa 10, Warszawa",
-                    "disappearancePlaceLongitude": null,
-                    "disappearancePlaceLatitude": null,
-                    "disappearanceDate": "2023-05-25T09:12:13.716Z",
-                    "description": "Uciekł i nie wrócił"
+                report:{
+                    "disappearancePlaceLongitude":21.0122,
+                    "disappearancePlaceLatitude":52.2297,
+                    "disappearanceDate":"2024-10-10",
+                    "description":"Zaginął pies rasy testowej",
+                    "address":"Warszawa, ul. Testowa 1"
                 },
-                animal: {
-                    "name": "Antek",
-                    "imageUrl": "https://example.com/animal.jpg",
-                    "breed": "York",
-                    "age": 1,
-                    "uniqueFeatures": "w niebieskie ciapki",
-                    "size": "small"
+                animal:{
+                    "uniqueFeatures":"Biała łata na uchu",
+                    "size":"Średni",
+                    "name":"Reksio",
+                    "imageUrl":"https://example.com/image.jpg",
+                    "breed":"Mieszaniec",
+                    "age":5
                 }
-        };
+            };
         
         console.warn('Adding new animal with data:', wrapper);
         
@@ -106,13 +112,15 @@ export default class MissingAnimals extends LightningElement {
             this.fetchAnimals();
         } catch (error) {
             console.error('Error adding missing animal:', error);
-        }
+        } finally {
+        this.isLoading = false;
+    }
     }
 
     async handleFoundChange(event) {
         const animalId = event.target.dataset.id;
         const found = event.target.checked;
-
+        console.log(`Updating found status for animal ID ${animalId} to ${found}`);
         try {
             await updateAnimalFoundStatus({ animalId, found });
 
@@ -157,5 +165,10 @@ export default class MissingAnimals extends LightningElement {
 
     handleNewAnimalImageUrlChange(event) {
         this.newAnimalImageUrl = event.target.value;
+    }
+
+    handleImageError(event) {
+        event.target.onerror = null;
+        event.target.src = 'https://cdn-icons-png.flaticon.com/512/4823/4823463.png';
     }
 }
