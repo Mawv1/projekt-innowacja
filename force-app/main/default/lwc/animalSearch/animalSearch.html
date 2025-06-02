@@ -2,14 +2,15 @@
   <lightning-card title="Adoptable Animals" icon-name="utility:animal_and_nature">
     <div class="slds-p-around_large slds-grid slds-wrap slds-grid_vertical-align-center slds-grid_align-center">
 
-      <!-- FILTERS Label -->
-      <div class="slds-size_1-of-1 slds-text-heading_large  slds-m-bottom_small slds-text-align_center">
+      <div class="slds-size_1-of-1 slds-text-heading_large slds-m-bottom_small slds-text-align_center">
          FILTERS
       </div>
 
       <!-- Filters Section -->
       <div class="slds-size_1-of-1 slds-box slds-theme_default slds-m-bottom_medium">
         <div class="slds-grid slds-wrap slds-gutters">
+
+          <!-- Shelters -->
           <div class="slds-col slds-size_1-of-4">
             <label class="custom-combobox-label">SHELTER</label>
             <lightning-combobox
@@ -20,26 +21,36 @@
               onchange={handleShelterChange}>
             </lightning-combobox>
           </div>
+
+          <!-- Breed -->
           <div class="slds-col slds-size_1-of-4">
             <label class="custom-combobox-label">BREED</label>
-            <lightning-combobox
-              name="breed"
+            <lightning-record-picker
+              label="Wybierz rasę"
               variant="label-hidden"
-              value={selectedBreed}
-              options={breedOptions}
+              placeholder="Wpisz nazwę rasy..."
+              object-api-name="Animal__c"
+              field-api-name="Breed__c"
+              matching-info={matchingInfo}
+              display-info={displayInfo}
               onchange={handleBreedChange}>
-            </lightning-combobox>
+            </lightning-record-picker>
           </div>
+
+          <!-- Age -->
           <div class="slds-col slds-size_1-of-4">
             <label class="custom-combobox-label">AGE</label>
-            <lightning-combobox
-              name="age"
+            <lightning-input
               variant="label-hidden"
+              type="number"
+              min="1"
+              max="20"
               value={selectedAge}
-              options={ageOptions}
               onchange={handleAgeChange}>
-            </lightning-combobox>
+            </lightning-input>
           </div>
+
+          <!-- Gender -->
           <div class="slds-col slds-size_1-of-4">
             <label class="custom-combobox-label">GENDER</label>
             <lightning-combobox
@@ -50,37 +61,46 @@
               onchange={handleGenderChange}>
             </lightning-combobox>
           </div>
+
         </div>
       </div>
 
-      <!-- Title -->
+      <template if:true={isLoading}>
+        <div class="slds-p-around_medium slds-text-align_center">
+          <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+      </template>
+
       <div class="slds-size_1-of-1 slds-text-align_center slds-m-bottom_medium">
         <h1 class="slds-text-heading_large">Search Results</h1>
       </div>
 
-      <!-- Results -->
-      <template if:true={filteredAnimals.length}>
+      <!-- RESULTS -->
+      <template if:true={animals.length}>
         <div class="slds-grid slds-wrap slds-gutters">
-          <template for:each={filteredAnimals} for:item="animal">
+          <template for:each={animals} for:item="animal">
             <div key={animal.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 custom-card">
               <div class="slds-box slds-p-around_none slds-m-around_small slds-text-align_center">
+                
                 <div class="card-image-container">
-                  <img src={animal.image} alt={animal.name} class="card-image" />
+                  <img src={animal.image} alt={animal.name} class="card-image" onerror={handleImageError}/>
                 </div>
+
                 <div class="card-info-panel slds-p-around_small slds-text-align_center" data-id={animal.id} onclick={navigateToAnimalDetail}>
-                    <h2 class="animal-name">{animal.name}</h2>                  
-                    <p class="slds-text-body_regular">{animal.breed}</p>
-                    <p class="slds-text-body_regular">{animal.gender}</p>
-                    <p class="slds-text-body_regular slds-m-bottom_small">{animal.age} years old</p>
-                    <p class="slds-text-title_caps slds-text-color_weak">{animal.shelterName}</p>
+                  <h2 class="animal-name">{animal.name}</h2>                  
+                  <p class="slds-text-body_regular">{animal.breed}</p>
+                  <p class="slds-text-body_regular">{animal.gender}</p>
+                  <p class="slds-text-body_regular slds-m-bottom_small">{animal.age}</p>
+                  <p class="slds-text-title_caps slds-text-color_weak">{animal.shelterName}</p>
                 </div>
+
               </div>
             </div>
           </template>
         </div>
       </template>
 
-      <template if:false={filteredAnimals.length}>
+      <template if:true={noResults}>
         <div class="slds-p-around_medium slds-text-align_center">
           <p class="slds-text-color_weak">No animals found matching the selected filters.</p>
         </div>
