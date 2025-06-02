@@ -3,6 +3,7 @@ import getMissingAnimals from '@salesforce/apex/MissingAnimalService.getMissingA
 import getMissingAnimalDetails from '@salesforce/apex/MissingAnimalService.getMissingAnimalDetails';
 import createMissingAnimal from '@salesforce/apex/MissingAnimalService.createMissingAnimal';
 import updateAnimalFoundStatus from '@salesforce/apex/MissingAnimalService.updateAnimalFoundStatus';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class MissingAnimals extends LightningElement {
     @track dayDelta = 50;
@@ -126,9 +127,24 @@ export default class MissingAnimals extends LightningElement {
 
             const animal = this.animals.find(a => a.id === animalId);
             if (animal) animal.found = found;
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Animal status updated',
+                    message: 'Animal found status has been updated successfully.',
+                    variant: 'success'
+                })
+            );
         } catch (error) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Failed to update animal status.',
+                    variant: 'error'
+                })
+            );
             console.error('Error updating found status:', error);
         }
+        
     }
 
     handleNewAnimalNameChange(event) {
