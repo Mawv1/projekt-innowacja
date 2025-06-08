@@ -41,16 +41,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Description__c</fieldItem>
-                <identifier>RecordDescription_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Date_of_admission__c</fieldItem>
                 <identifier>RecordDate_of_admission_cField2</identifier>
             </fieldInstance>
@@ -75,18 +65,22 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Name</fieldItem>
-                <identifier>RecordNameField2</identifier>
+                <fieldItem>Record.Description__c</fieldItem>
+                <identifier>RecordDescription_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <name>Facet-72417759-6812-4863-b4a1-03058a5df886</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Age__c</fieldItem>
-                <identifier>RecordAge_cField</identifier>
+                <fieldItem>Record.Breed__c</fieldItem>
+                <identifier>RecordBreed_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -105,22 +99,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Breed__c</fieldItem>
-                <identifier>RecordBreed_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-72417759-6812-4863-b4a1-03058a5df886</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Description__c</fieldItem>
-                <identifier>RecordDescription_cField</identifier>
+                <fieldItem>Record.Age__c</fieldItem>
+                <identifier>RecordAge_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -129,8 +109,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Status__c</fieldItem>
-                <identifier>RecordStatus_cField</identifier>
+                <fieldItem>Record.Weight__c</fieldItem>
+                <identifier>RecordWeight_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -139,8 +119,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Date_of_admission__c</fieldItem>
-                <identifier>RecordDate_of_admission_cField</identifier>
+                <fieldItem>Record.Likes__c</fieldItem>
+                <identifier>RecordLikes_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -149,8 +129,18 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Shelter__c</fieldItem>
-                <identifier>RecordShelter_cField2</identifier>
+                <fieldItem>Record.Dislikes__c</fieldItem>
+                <identifier>RecordDislikes_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Special_needs__c</fieldItem>
+                <identifier>RecordSpecial_needs_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-780336d9-e553-41c2-a80a-92f6f4f2d3a7</name>
@@ -221,190 +211,10 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Photo__c</fieldItem>
-                <identifier>RecordPhoto_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-8i27wbakn18</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Photo_URL__c</fieldItem>
-                <identifier>RecordPhoto_URL_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-1g0fnx2jriq</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-8i27wbakn18</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-1g0fnx2jriq</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-f5jmqoyhqq8</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-f5jmqoyhqq8</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Image</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Likes__c</fieldItem>
-                <identifier>RecordLikes_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Dislikes__c</fieldItem>
-                <identifier>RecordDislikes_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Special_needs__c</fieldItem>
-                <identifier>RecordSpecial_needs_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-7775b509-5ba5-4de0-b831-04643d4eac61</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Weight__c</fieldItem>
-                <identifier>RecordWeight_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CreatedById</fieldItem>
-                <identifier>RecordCreatedByIdField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.LastModifiedById</fieldItem>
-                <identifier>RecordLastModifiedByIdField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-2bd73f2e-4b97-4a14-b4c4-6b7d44209c3d</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-7775b509-5ba5-4de0-b831-04643d4eac61</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-2bd73f2e-4b97-4a14-b4c4-6b7d44209c3d</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-7ee059d9-8d5e-4c5f-9dfb-05f1df5fd349</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-7ee059d9-8d5e-4c5f-9dfb-05f1df5fd349</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Details</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>

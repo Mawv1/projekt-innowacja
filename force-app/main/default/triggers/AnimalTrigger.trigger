@@ -10,7 +10,7 @@ trigger AnimalTrigger on Animal__c (after insert, after update, after delete, af
             when AFTER_UNDELETE {
                 AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);
             }
-            when else {
+            when AFTER_INSERT, AFTER_UPDATE {
                 AnimalTriggerHandler.updateAdoptedAnimalCounts(Trigger.new, Trigger.oldMap, Trigger.operationType);
                 AnimalTriggerHandler.updateUnadoptedAnimalCounts(Trigger.new, Trigger.old, Trigger.operationType);
             }
