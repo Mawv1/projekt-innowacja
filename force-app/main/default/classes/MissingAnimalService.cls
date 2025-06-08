@@ -24,7 +24,7 @@ public with sharing class MissingAnimalService {
         }
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=false)
     public static List<AnimalWrapper> getMissingAnimals(Integer dayDelta) {
         if (dayDelta == null) {
             dayDelta = 7;
@@ -55,7 +55,7 @@ public with sharing class MissingAnimalService {
         }
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=false)
     public static AnimalDetailWrapper getMissingAnimalDetails(String id) {
         if (id == null) {
             throw new InvalidParameterException('Id cannot be null');
