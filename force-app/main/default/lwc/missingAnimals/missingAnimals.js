@@ -70,6 +70,9 @@ export default class MissingAnimals extends LightningElement {
                     });
             });
             this.animals = await Promise.all(detailedPromises);
+            this.animals.sort((a, b) => {
+                return new Date(b.missingDate) - new Date(a.missingDate);
+            });
         } catch (error) {
             console.error('Error fetching animals list:', error);
         } finally {
