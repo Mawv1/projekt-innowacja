@@ -18,8 +18,9 @@ public with sharing class AuthService {
         if (MOCK_ACCESS_TOKEN != null) {
             return MOCK_ACCESS_TOKEN;
         }
+      
+        Auth_Settings__c authSettings = Auth_Settings__c.getOrgDefaults();
 
-        Auth_Settings__c authSettings = Auth_Settings__c.getInstance('AuthService');
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();

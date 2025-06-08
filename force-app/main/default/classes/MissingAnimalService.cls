@@ -4,9 +4,9 @@ public with sharing class MissingAnimalService {
     private static final String POST = 'POST';
     
     public class AnimalWrapper {
-        public String id;
-        public String missingDate;
-        public String name;
+       @AuraEnabled public String id {get; set;}
+       @AuraEnabled public String missingDate {get; set;}
+       @AuraEnabled public String name {get; set;}
 
         public Date getMissingDate() {
             return Date.valueOf(missingDate.substring(0,10));
@@ -14,16 +14,17 @@ public with sharing class MissingAnimalService {
     }
 
     public class AnimalDetailWrapper {
-        public String id;
-        public String name;
-        public String missingDate;
-        public String imageUrl;
+       @AuraEnabled public String id {get; set;}
+       @AuraEnabled public String name {get; set;}
+       @AuraEnabled public String missingDate {get; set;}
+       @AuraEnabled public String imageUrl {get; set;}
 
         public Date getMissingDate() {
             return Date.valueOf(missingDate.substring(0,10));
         }
     }
 
+    @AuraEnabled(cacheable=false)
     public static List<AnimalWrapper> getMissingAnimals(Integer dayDelta) {
         if (dayDelta == null) {
             dayDelta = 7;
@@ -54,14 +55,15 @@ public with sharing class MissingAnimalService {
         }
     }
 
+    @AuraEnabled(cacheable=false)
     public static AnimalDetailWrapper getMissingAnimalDetails(String id) {
         if (id == null) {
             throw new InvalidParameterException('Id cannot be null');
         }
 
-        if (!id.substring(0,4).equals('ANO-')) {
-            throw new InvalidParameterException('Wrong Id format');
-        }
+        // if (!id.substring(0,4).equals('ANO-')) {
+        //     throw new InvalidParameterException('Wrong Id format');
+        // }
 
         String token = AuthService.getAccessToken();
 
@@ -83,28 +85,30 @@ public with sharing class MissingAnimalService {
         }
     }
 
+    
     public class MissingAnimalWrapper {
-        public ReportWrapper report;
-        public AnimalCreateWrapper animal;
+       @AuraEnabled public ReportWrapper report {get; set;}
+       @AuraEnabled public AnimalCreateWrapper animal {get; set;}
     }
 
     public class ReportWrapper {
-        public String address;
-        public Decimal disappearancePlaceLongitude;
-        public Decimal disappearancePlaceLatitude;
-        public String disappearanceDate;
-        public String description;
+       @AuraEnabled public String address {get; set;}
+       @AuraEnabled public Decimal disappearancePlaceLongitude {get; set;}
+       @AuraEnabled public Decimal disappearancePlaceLatitude {get; set;}
+       @AuraEnabled public String disappearanceDate {get; set;}
+       @AuraEnabled public String description {get; set;}
     }
 
     public class AnimalCreateWrapper {
-        public String name;
-        public String imageUrl;
-        public String breed;
-        public Integer age;
-        public String uniqueFeatures;
-        public String size;
+       @AuraEnabled public String name {get; set;}
+       @AuraEnabled public String imageUrl {get; set;}
+       @AuraEnabled public String breed {get; set;}
+       @AuraEnabled public Integer age {get; set;}
+       @AuraEnabled public String uniqueFeatures {get; set;}
+       @AuraEnabled public String size {get; set;}
     }
 
+    @AuraEnabled(cacheable=true)
     public static void createMissingAnimal(MissingAnimalWrapper wrapper) {
         if (wrapper == null || wrapper.report == null || wrapper.animal == null) {
             throw new InvalidParameterException('Brak wymaganych danych');
@@ -140,10 +144,11 @@ public with sharing class MissingAnimalService {
     }
 
     public class UpdateAnimalFoundWrapper {
-        public String animalId;
-        public Boolean found;
+       @AuraEnabled public String animalId {get; set;}
+       @AuraEnabled public Boolean found {get; set;}
     }
 
+    @AuraEnabled(cacheable=true)
     public static void updateAnimalFoundStatus(String animalId, Boolean found) {
         if (String.isBlank(animalId)) {
             throw new AuraHandledException('animalId nie może być pusty');
@@ -152,9 +157,9 @@ public with sharing class MissingAnimalService {
             throw new AuraHandledException('found nie może być pusty');
         }
 
-        if (!animalId.startsWith('ANO-')) {
-            throw new AuraHandledException('Nieprawidłowy format animalId');
-        }
+        // if (!animalId.startsWith('ANO-')) {
+        //     throw new AuraHandledException('Nieprawidłowy format animalId');
+        // }
 
         String token = AuthService.getAccessToken();
 

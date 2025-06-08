@@ -1,0 +1,181 @@
+<template>
+    <lightning-card title="Missing Animals" icon-name="utility:animal_and_nature">
+        <!-- ============== LOADING SPINNER ============== -->
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium slds-text-align_center">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- ============== ADD MISSING ANIMAL FORM ============== -->
+        <div class="slds-p-horizontal_medium">
+            <lightning-card title="Add Missing Animal" class="slds-box slds-theme_default slds-m-top_medium">
+                <div class="slds-p-around_medium slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Name" 
+                            value={newAnimalName} 
+                            onchange={handleNewAnimalNameChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Address" 
+                            value={newReportAddress} 
+                            onchange={handleNewReportAddressChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Disappearance Date"
+                            type="date" 
+                            value={newDisappearanceDate} 
+                            onchange={handleNewDisappearanceDateChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-textarea 
+                            label="Description" 
+                            value={newReportDescription} 
+                            onchange={handleNewReportDescriptionChange}>
+                        </lightning-textarea>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Breed" 
+                            value={newAnimalBreed} 
+                            onchange={handleNewAnimalBreedChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-slider
+                            label="Age"
+                            min="0"
+                            max="30"
+                            step="1"
+                            value={newAnimalAge}
+                            onchange={handleNewAnimalAgeChange}>
+                        </lightning-slider>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Unique Features" 
+                            value={newAnimalUniqueFeatures} 
+                            onchange={handleNewAnimalUniqueFeaturesChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
+                        <lightning-combobox
+                            name="animalSize"
+                            label="Size"
+                            value={newAnimalSize}
+                            placeholder="Choose Size"
+                            options={sizeOptions}
+                            onchange={handleNewAnimalSizeChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
+                        <lightning-input 
+                            label="Image URL" 
+                            value={newAnimalImageUrl} 
+                            onchange={handleNewAnimalImageUrlChange}>
+                        </lightning-input>
+                    </div>
+                    <!-- ADD ANIMAL BUTTON (full width) -->
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small slds-text-align_center">
+                        <lightning-button 
+                            label="Add Animal" 
+                            onclick={handleAddAnimal} 
+                            class="slds-m-top_small">
+                        </lightning-button>
+                    </div>
+                </div>
+            </lightning-card>
+        </div>
+
+        <!-- ============== SEARCH ============== -->
+        <div class="slds-p-around_large slds-grid slds-wrap slds-grid_vertical-align-center slds-grid_align-center">
+            <!-- DAY DELTA INPUT -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_small slds-text-align_center slds-m-bottom_small">
+                <label class="custom-combobox-label">DAY DELTA</label>
+                <lightning-slider
+                    min="0"
+                    max="365"
+                    step="1"
+                    value={dayDelta}
+                    onchange={handleDeltaChange}>
+                </lightning-slider>
+                <p>Showing missing animals from the last <strong>{dayDelta}</strong> days.</p>
+                <lightning-button 
+                    label="Fetch Animals" 
+                    onclick={fetchAnimals} 
+                    class="slds-m-top_small">
+                </lightning-button>
+            </div>
+        </div>
+
+        <!-- ============== SEARCH RESULTS HEADER ============== -->
+        <template if:true={animals.length}>
+            <div class="slds-p-around_medium slds-text-align_center slds-m-bottom_medium">
+                <h1 class="slds-text-heading_large">Search Results</h1>
+            </div>
+        </template>
+
+        <!-- ============== ANIMAL CARDS GRID ============== -->
+        <template if:true={animals.length}>
+            <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+                <template for:each={animals} for:item="animal">
+                    <div key={animal.id} 
+                         class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 custom-card">
+                        <div class="slds-box slds-p-around_none slds-m-around_small slds-text-align_center">
+                            <!-- IMAGE -->
+                            <div class="card-image-container">
+                                <template if:true={animal.imageUrl}>
+                                    <img 
+                                        src={animal.imageUrl} 
+                                        alt={animal.name} 
+                                        class="card-image" 
+                                        onerror={handleImageError} />
+                                </template>
+                            </div>
+                            <!-- INFO PANEL -->
+                            <div class="card-info-panel slds-p-around_small">
+                                <h2 class="animal-name">{animal.name}</h2>
+                                <p class="slds-text-body_regular">Disappearance Date</p>
+                                <lightning-formatted-date-time 
+                                    class="slds-m-bottom_small slds-text-title_caps"
+                                    value={animal.missingDate} 
+                                    year="numeric" 
+                                    month="2-digit" 
+                                    day="2-digit">
+                                </lightning-formatted-date-time>
+                                <template if:true={animal.breed}>
+                                    <p class="slds-text-body_regular">{animal.breed}</p>
+                                </template>
+                                <!-- Found Checkbox -->
+                                <lightning-input 
+                                    type="checkbox" 
+                                    label="Found" 
+                                    checked={animal.found} 
+                                    data-id={animal.id} 
+                                    onchange={handleFoundChange}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- NO RESULTS MESSAGE -->
+        <template if:false={animals.length}>
+            <template if:false={isLoading}>
+                <div class="slds-p-around_medium slds-text-align_center">
+                    <p class="slds-text-color_weak">
+                        No animals found for the specified period.
+                    </p>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
