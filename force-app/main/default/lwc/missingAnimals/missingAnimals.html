@@ -48,12 +48,14 @@
                         </lightning-input>
                     </div>
                     <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
-                        <lightning-input 
-                            type="number" 
-                            label="Age" 
-                            value={newAnimalAge} 
+                        <lightning-slider
+                            label="Age"
+                            min="0"
+                            max="30"
+                            step="1"
+                            value={newAnimalAge}
                             onchange={handleNewAnimalAgeChange}>
-                        </lightning-input>
+                        </lightning-slider>
                     </div>
                     <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
                         <lightning-input 
@@ -63,11 +65,14 @@
                         </lightning-input>
                     </div>
                     <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_xx-small">
-                        <lightning-input 
-                            label="Size" 
-                            value={newAnimalSize} 
+                        <lightning-combobox
+                            name="animalSize"
+                            label="Size"
+                            value={newAnimalSize}
+                            placeholder="Choose Size"
+                            options={sizeOptions}
                             onchange={handleNewAnimalSizeChange}>
-                        </lightning-input>
+                        </lightning-combobox>
                     </div>
                     <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
                         <lightning-input 
@@ -93,13 +98,14 @@
             <!-- DAY DELTA INPUT -->
             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_small slds-text-align_center slds-m-bottom_small">
                 <label class="custom-combobox-label">DAY DELTA</label>
-                <lightning-input 
-                    type="number" 
-                    value={dayDelta} 
-                    onchange={handleDeltaChange} 
+                <lightning-slider
                     min="0"
-                    class="slds-m-top_xx-small">
-                </lightning-input>
+                    max="365"
+                    step="1"
+                    value={dayDelta}
+                    onchange={handleDeltaChange}>
+                </lightning-slider>
+                <p>Showing missing animals from the last <strong>{dayDelta}</strong> days.</p>
                 <lightning-button 
                     label="Fetch Animals" 
                     onclick={fetchAnimals} 

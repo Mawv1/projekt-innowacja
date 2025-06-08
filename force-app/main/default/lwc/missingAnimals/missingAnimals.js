@@ -6,9 +6,17 @@ import updateAnimalFoundStatus from '@salesforce/apex/MissingAnimalService.updat
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class MissingAnimals extends LightningElement {
-    @track dayDelta = 50;
+    @track dayDelta = 100;
     @track animals = [];
     @track isLoading = false;
+
+    get sizeOptions() {
+    return [
+        { label: 'Small',  value: 'Small' },
+        { label: 'Medium', value: 'Medium' },
+        { label: 'Big',    value: 'Big' }
+    ];
+}
 
     // Formularz - zmienne do trzymania wartości
     newAnimalName = '';
@@ -30,6 +38,7 @@ export default class MissingAnimals extends LightningElement {
             this.isLoading = true;
             const list = await getMissingAnimals({ dayDelta: this.dayDelta });
             const detailedPromises = list.map(item => {
+                // console.log('Processing item ID:', item);
                 if (!item.id) {
                     console.warn('Skipping detail fetch: missing id for item', item);
                     return Promise.resolve({
@@ -40,6 +49,7 @@ export default class MissingAnimals extends LightningElement {
                         found: false
                     });
                 }
+                
                 return getMissingAnimalDetails({ id: item.id })
                     .then(detail => ({
                         id: detail.id,
@@ -76,23 +86,36 @@ export default class MissingAnimals extends LightningElement {
         }
         
         const formattedDate = new Date(this.newDisappearanceDate).toISOString().split('T')[0];
-        console.log('Formatted disappearance date:', formattedDate);
+        
+        const today = new Date();
+        const disappearanceDate = new Date(formattedDate);
+        if (disappearanceDate > today) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Disappearance date cannot be in the future.',
+                    variant: 'error'
+                })
+            );
+            this.isLoading = false;
+            return;
+        }
         
         const wrapper ={
                 report:{
-                    "disappearancePlaceLongitude":21.0122,
-                    "disappearancePlaceLatitude":52.2297,
-                    "disappearanceDate":"2024-10-10",
-                    "description":"Zaginął pies rasy testowej",
-                    "address":"Warszawa, ul. Testowa 1"
+                    "disappearancePlaceLongitude": null,
+                    "disappearancePlaceLatitude": null,
+                    "disappearanceDate": formattedDate,
+                    "description": this.newReportDescription,
+                    "address": this.newReportAddress
                 },
                 animal:{
-                    "uniqueFeatures":"Biała łata na uchu",
-                    "size":"Średni",
-                    "name":"Reksio",
-                    "imageUrl":"https://example.com/image.jpg",
-                    "breed":"Mieszaniec",
-                    "age":5
+                    "uniqueFeatures": this.newAnimalUniqueFeatures,
+                    "size": this.newAnimalSize,
+                    "name": this.newAnimalName,
+                    "imageUrl": this.newAnimalImageUrl,
+                    "breed": this.newAnimalBreed,
+                    "age": this.newAnimalAge ? parseInt(this.newAnimalAge, 10) : null
                 }
             };
         
