@@ -61,9 +61,9 @@ public with sharing class MissingAnimalService {
             throw new InvalidParameterException('Id cannot be null');
         }
 
-        if (!id.substring(0,4).equals('ANO-')) {
-            throw new InvalidParameterException('Wrong Id format');
-        }
+        // if (!id.substring(0,4).equals('ANO-')) {
+        //     throw new InvalidParameterException('Wrong Id format');
+        // }
 
         String token = AuthService.getAccessToken();
 
