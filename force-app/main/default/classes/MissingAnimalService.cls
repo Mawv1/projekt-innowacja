@@ -157,9 +157,9 @@ public with sharing class MissingAnimalService {
             throw new AuraHandledException('found nie może być pusty');
         }
 
-        if (!animalId.startsWith('ANO-')) {
-            throw new AuraHandledException('Nieprawidłowy format animalId');
-        }
+        // if (!animalId.startsWith('ANO-')) {
+        //     throw new AuraHandledException('Nieprawidłowy format animalId');
+        // }
 
         String token = AuthService.getAccessToken();
 
