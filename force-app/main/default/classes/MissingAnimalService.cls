@@ -111,17 +111,17 @@ public with sharing class MissingAnimalService {
     @AuraEnabled(cacheable=true)
     public static void createMissingAnimal(MissingAnimalWrapper wrapper) {
         if (wrapper == null || wrapper.report == null || wrapper.animal == null) {
-            throw new AuraHandledException('Brak wymaganych danych');
+            throw new InvalidParameterException('Brak wymaganych danych');
         }
 
         Boolean hasAddress = !String.isBlank(wrapper.report.address);
         Boolean hasCoords = wrapper.report.disappearancePlaceLatitude != null && wrapper.report.disappearancePlaceLongitude != null;
         if (!hasAddress && !hasCoords) {
-            throw new AuraHandledException('Wymagany jest adres lub współrzędne');
+            throw new InvalidParameterException('Wymagany jest adres lub współrzędne');
         }
 
         if (String.isBlank(wrapper.report.disappearanceDate) || String.isBlank(wrapper.report.description)) {
-            throw new AuraHandledException('Data zaginięcia i opis są wymagane');
+            throw new InvalidParameterException('Data zaginięcia i opis są wymagane');
         }
 
         String token = AuthService.getAccessToken();

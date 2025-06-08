@@ -8,8 +8,6 @@ public with sharing class AuthService {
         public String signature;
     }
 
-    private static final String ENDPOINT = 'https://test.salesforce.com/services/oauth2/token';
-
     private static String MOCK_ACCESS_TOKEN;
 
     public static void setMockAccessToken(String token) {
@@ -20,8 +18,9 @@ public with sharing class AuthService {
         if (MOCK_ACCESS_TOKEN != null) {
             return MOCK_ACCESS_TOKEN;
         }
-
+      
         Auth_Settings__c authSettings = Auth_Settings__c.getOrgDefaults();
+
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
