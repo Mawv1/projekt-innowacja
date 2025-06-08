@@ -652,6 +652,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>Missing_Animals</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Shelter__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
