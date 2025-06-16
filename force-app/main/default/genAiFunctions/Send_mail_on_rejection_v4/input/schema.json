@@ -1,0 +1,14 @@
+{
+  "required" : [ "AdoptionID" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AdoptionID" : {
+      "title" : "AdoptionID",
+      "description" : "Pass adoption ID to flow",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

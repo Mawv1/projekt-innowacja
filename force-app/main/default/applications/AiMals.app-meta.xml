@@ -108,6 +108,7 @@
     <tabs>Shelter__c</tabs>
     <tabs>Adoption__c</tabs>
     <tabs>standard-Account</tabs>
+    <tabs>Missing_Animals</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Ai_Mals_UtilityBar</utilityBar>
 </CustomApplication>

@@ -1,0 +1,27 @@
+{
+  "required" : [ "Adopter", "Animal" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Adopter" : {
+      "title" : "Adopter",
+      "description" : "Handle data that user gives as an adopter",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Animal" : {
+      "title" : "Animal",
+      "description" : "Handle data that user gives as an animal",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Animal__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
