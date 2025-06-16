@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Use this action when a user wants to create a new animal adoption record. Ask for the adopter, the animal being adopted, and adoption details such as the date and location. Once the information is collected, create the adoption record and return the created records for confirmation.</description>
+    <invocationTarget>Create_Adoption_AI</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <masterLabel>Create Adoption AI_4</masterLabel>
+</GenAiFunction>

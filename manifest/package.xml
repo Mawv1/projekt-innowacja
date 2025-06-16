@@ -85,7 +85,13 @@
     </types>
     <types>
         <members>Populate_Shelter_Day_Key</members>
+        <members>Create_Adoption_AI</members>
+        <members>Send_mail_on_rejection</members>
         <name>Flow</name>
     </types>
-    <version>56.0</version>
+    <types>
+        <members>*</members>
+        <name>GenAiFunction</name>
+    </types>
+    <version>60.0</version>
 </Package>
