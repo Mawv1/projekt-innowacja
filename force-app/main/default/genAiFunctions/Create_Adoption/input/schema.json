@@ -1,0 +1,36 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Adopter" : {
+      "title" : "Adopter",
+      "description" : "Ask the user who is adopting the animal. This should be an existing adopter record or someone who can be matched to one.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Adoption" : {
+      "title" : "Adoption",
+      "description" : "Ask for details about the adoption, such as date, time, and location. These will be used to create the adoption record.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Adoption__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Animal" : {
+      "title" : "Animal",
+      "description" : "Ask which animal is being adopted. This should be a known animal in the system.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Animal__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

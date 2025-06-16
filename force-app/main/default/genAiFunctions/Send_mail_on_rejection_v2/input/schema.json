@@ -1,0 +1,17 @@
+{
+  "required" : [ "adoption" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "adoption" : {
+      "title" : "adoption",
+      "description" : "Pass adoption ID",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Adoption__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

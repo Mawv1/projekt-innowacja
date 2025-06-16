@@ -1,0 +1,14 @@
+{
+  "required" : [ "AdoptionID" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AdoptionID" : {
+      "title" : "AdoptionID",
+      "description" : "Pass adoption ID to flow, to enable it to search for a record",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

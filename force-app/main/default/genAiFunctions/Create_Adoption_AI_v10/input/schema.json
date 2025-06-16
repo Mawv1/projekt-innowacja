@@ -1,0 +1,26 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Adopter" : {
+      "title" : "Adopter",
+      "description" : "Pass adopter information to flow",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Animal" : {
+      "title" : "Animal",
+      "description" : "Pass animal information to flow",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Animal__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
